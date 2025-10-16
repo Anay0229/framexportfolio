@@ -27,6 +27,9 @@
     <!-- wrapper -->
     <div class="mil-wrapper" id="top">
 
+        <!-- liquid ether background -->
+        <div id="liquid-ether" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div>
+
         <!-- cursor -->
         <div class="mil-ball">
             <span class="mil-icon-1">
@@ -166,17 +169,9 @@
 
                                             <h6 class="mil-muted mil-mb-30">Canada</h6>
 
-                                            <p class="mil-light-soft mil-up">71 South Los Carneros Road, California
-                                                <span class="mil-no-wrap">+51 174 705 812</span>
+                                            <p class="mil-light-soft mil-up">Indore, Madhya Pradesh
+                                                <span class="mil-no-wrap">+91 7415900282</span>
                                             </p>
-
-                                        </div>
-                                        <div class="col-lg-4 mil-mb-60">
-
-                                            <h6 class="mil-muted mil-mb-30">Germany</h6>
-
-                                            <p class="mil-light-soft">Leehove 40, 2678 MC De Lier, Netherlands <span
-                                                    class="mil-no-wrap">+31 174 705 811</span></p>
 
                                         </div>
                                     </div>
@@ -609,12 +604,12 @@
                                         </div>
                                         <div class="col-md-6 col-lg-5">
 
-                                            <ul class="mil-menu-list mil-up mil-mb-60">
+                                            <!-- <ul class="mil-menu-list mil-up mil-mb-60">
                                                 <li><a href="#." class="mil-light-soft">Privacy Policy</a></li>
                                                 <li><a href="#." class="mil-light-soft">Terms and conditions</a></li>
                                                 <li><a href="#." class="mil-light-soft">Cookie Policy</a></li>
                                                 <li><a href="#." class="mil-light-soft">Careers</a></li>
-                                            </ul>
+                                            </ul> -->
 
                                         </div>
                                     </div>
@@ -628,19 +623,10 @@
 
                                         <div class="col-md-6 col-lg-5 mil-mb-60">
 
-                                            <h6 class="mil-muted mil-up mil-mb-30">Canada</h6>
+                                            <h6 class="mil-muted mil-up mil-mb-30">Contact Us</h6>
 
                                             <p class="mil-light-soft mil-up">Indore, Madhya Pradesh
                                                 <span class="mil-no-wrap">+91 7415900282</span>
-                                            </p>
-
-                                        </div>
-                                        <div class="col-md-6 col-lg-5 mil-mb-60">
-
-                                            <h6 class="mil-muted mil-up mil-mb-30">Germany</h6>
-
-                                            <p class="mil-light-soft mil-up">Leehove 40, 2678 MC De Lier, Netherlands
-                                                <span class="mil-no-wrap">+31 174 705 811</span>
                                             </p>
 
                                         </div>
@@ -813,6 +799,24 @@
     <script src="js/plugins/ScrollTrigger.min.js"></script>
     <!-- scroll to js -->
     <script src="js/plugins/ScrollTo.min.js"></script>
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Liquid Ether effect -->
+    <script type="module">
+        import { initLiquidEther } from './js/effects/LiquidEther.js';
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('liquid-ether');
+            initLiquidEther(container, {
+                colors: ['#5227FF', '#FF9FFC', '#B19EEF'],
+                mouseForce: 20,
+                cursorSize: 100,
+                autoDemo: true,
+                autoSpeed: 0.5,
+                autoIntensity: 2.2
+            });
+        });
+    </script>
     <!-- ashley js -->
     <script src="js/main.js"></script>
 
