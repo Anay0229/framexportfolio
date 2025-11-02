@@ -543,7 +543,7 @@ menu
             }
 
             &.mil-active {
-                & > a {
+                &>a {
                     color: $accent;
 
                     &:hover {
@@ -554,7 +554,7 @@ menu
             }
 
             &.mil-has-children {
-                & > a {
+                &>a {
                     &:hover {
                         color: $light;
                         padding-left: 25px;
@@ -2022,6 +2022,59 @@ footer
 }
 
 /* -------------------------------------------
+Custom Footer Styles (User Request)
+------------------------------------------- */
+
+footer.mil-dark-bg {
+
+    /* 1. Increase Logo Size and ensure it's on the left */
+    .mil-logo {
+        font-size: 48px;
+        /* You can change 48px to any size you like */
+    }
+
+    /* 2. Increase Icon Size */
+    .mil-social-icons li a {
+        font-size: 24px;
+        /* Increased from 18px */
+    }
+
+    /* Add a little more space between icons */
+    .mil-social-icons li {
+        margin-right: 20px;
+    }
+
+    /* 3. Align Nav & Contact to the Right (on desktop) */
+    @media screen and (min-width: 768px) {
+
+        /* Aligns the nav menu block to the right */
+        .mil-footer-menu {
+            float: right;
+            text-align: right;
+        }
+
+        /* Aligns the contact block to the right */
+        .mil-footer-contact {
+            float: right;
+            text-align: right;
+            /* Aligns the text inside */
+        }
+    }
+
+    /* 4. Fix alignments on mobile */
+    @media screen and (max-width: 767px) {
+
+        .mil-footer-menu,
+        .mil-footer-contact {
+            float: none;
+            width: 100%;
+            text-align: left;
+        }
+    }
+}
+
+
+/* -------------------------------------------
 
 portfolio
 
@@ -2472,7 +2525,7 @@ images
     position: relative;
     overflow: hidden;
 
-    & > img {
+    &>img {
         position: absolute;
         top: 0;
         left: 0;
