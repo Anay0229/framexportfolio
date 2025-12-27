@@ -52,6 +52,44 @@ p.s. I am available for Freelance hire (UI design, web development). email: mill
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css);
 
+/* Video orientation utility classes
+   Use `.portrait` for tall/vertical clips and `.landscape` for wide clips.
+   These target `.mil-video-frame` so they can be applied alongside existing class.
+*/
+.mil-video-frame.portrait{
+  width: min(42vw, 420px) !important;
+  max-width: 420px !important;
+  aspect-ratio: 9/16 !important;
+  height: auto !important;
+  object-fit: cover !important;
+  display: block !important;
+  margin: 0 auto !important;
+}
+.mil-video-frame.landscape{
+  width: 100% !important;
+  max-width: 100% !important;
+  aspect-ratio: 16/9 !important;
+  height: auto !important;
+  object-fit: cover !important;
+  display: block !important;
+}
+
+/* Portfolio slider video orientation utilities */
+.portfolio-video.portrait{
+  width: min(42vw, 420px) !important;
+  max-width: 420px !important;
+  aspect-ratio: 9/16 !important;
+  height: auto !important;
+  object-fit: cover !important;
+}
+.portfolio-video.landscape{
+  width: 100% !important;
+  max-width: 100% !important;
+  aspect-ratio: 16/9 !important;
+  height: auto !important;
+  object-fit: cover !important;
+}
+
 /* -------------------------------------------
 
 main
