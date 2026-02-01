@@ -414,13 +414,28 @@
                 <!-- services end -->
 
                 <!-- reviews -->
-                <section class="mil-p-120-120">
-                    <div class="mil-deco" style="top: 0; right: 15%;"></div>
+                <section class="mil-p-120-120" style="position: relative; overflow: hidden;">
+
+                    <!-- Left Vertical Text -->
+                    <div class="mil-vertical-text-left">
+                        <span>HOMEPAGE</span>
+                    </div>
+
+                    <!-- Right Vertical Text -->
+                    <div class="mil-vertical-text-right">
+                        <div class="mil-back-to-top-btn">
+                            <i class="fas fa-arrow-up"></i>
+                        </div>
+                        <span>BACK TO TOP</span>
+                    </div>
+
                     <div class="container">
                         <div class="row align-items-end mil-mb-60">
                             <div class="col-lg-6">
-                                <span class="mil-suptitle mil-suptitle-2 mil-mb-30">Partners</span>
-                                <h2 class="mil-mb-30">Brands Worked With</h2>
+                                <span class="mil-suptitle mil-suptitle-2 mil-mb-30"
+                                    style="color: #999; font-size: 14px; letter-spacing: 1px;">Partners</span>
+                                <h2 class="mil-mb-30" style="font-size: 64px; font-weight: 600; line-height: 1.1;">
+                                    Brands Worked <br> With</h2>
                             </div>
                         </div>
                         <div class="swiper-container mil-infinite-show">
@@ -432,12 +447,12 @@
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="mil-brand-circle">
-                                        <img src="img/partners/1111.png" alt="1111 Cafe">
+                                        <img src="img/partners/1111 Logo.jpg" alt="1111 Cafe">
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="mil-brand-circle">
-                                        <img src="img/partners/dues.png" alt="Dues">
+                                        <img src="img/partners/Deuce Logo.jpg" alt="Dues">
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
@@ -447,12 +462,12 @@
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="mil-brand-circle">
-                                        <img src="img/partners/satvik.png" alt="Satvik">
+                                        <img src="img/partners/Satvik Logo.jpg" alt="Satvik">
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="mil-brand-circle">
-                                        <img src="img/partners/brawler.png" alt="Brawler Brothers">
+                                        <img src="img/partners/Brawler bros logo.JPEG" alt="Brawler Brothers">
                                     </div>
                                 </div>
                             </div>
@@ -460,50 +475,97 @@
                     </div>
                 </section>
                 <style>
+                    /* Vertical Text Styles */
+                    .mil-vertical-text-left {
+                        position: absolute;
+                        left: 40px;
+                        top: 50%;
+                        transform: translateY(-50%) rotate(-180deg);
+                        writing-mode: vertical-lr;
+                        color: #000;
+                        font-weight: 600;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                        z-index: 10;
+                    }
+
+                    .mil-vertical-text-right {
+                        position: absolute;
+                        right: 40px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 20px;
+                        z-index: 10;
+                    }
+
+                    .mil-vertical-text-right span {
+                        writing-mode: vertical-rl;
+                        transform: rotate(180deg);
+                        /* Flip it to read bottom-to-top if needed, or check design preference. Usually bottom-up for right side. */
+                        color: #000;
+                        font-weight: 600;
+                        font-size: 12px;
+                        letter-spacing: 2px;
+                    }
+
+                    .mil-back-to-top-btn {
+                        width: 40px;
+                        height: 40px;
+                        background: #eee;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 14px;
+                        color: #000;
+                        cursor: pointer;
+                        margin-bottom: 10px;
+                    }
+
+                    /* Correct headers */
+                    .mil-suptitle-2 {
+                        text-transform: none;
+                        /* remove any default uppercase if exists */
+                    }
+
                     .mil-brand-circle {
                         position: relative;
                         width: 140px;
-                        /* Fixed width */
                         height: 140px;
-                        /* Fixed height = Width for perfect circle */
                         border-radius: 50%;
-                        /* Makes it round */
-                        background-color: #f2f2f2;
-                        /* Light gray background */
+                        background-color: #f9f9f9;
+                        /* Lighter background */
                         display: flex;
                         justify-content: center;
                         align-items: center;
                         margin: 0 auto;
-                        /* Centers it in the slide */
-                        border: 1px solid rgba(0, 0, 0, 0.05);
+                        /* border: 1px solid rgba(0, 0, 0, 0.05); */
                         overflow: hidden;
                         transition: 0.4s cubic-bezier(0, 0, 0.3642, 1);
                     }
 
                     .mil-brand-circle img {
-                        max-width: 60%;
-                        /* Ensures logo fits inside comfortably */
-                        max-height: 60%;
+                        max-width: 55%;
+                        max-height: 55%;
                         object-fit: contain;
                         filter: grayscale(100%);
-                        /* Makes logos black & white initially */
-                        opacity: 0.7;
+                        opacity: 1;
+                        /* Keep opac 1 but grey */
                         transition: 0.4s ease;
                     }
 
-                    /* Hover Effects */
                     .mil-brand-circle:hover {
-                        background-color: #ff9800;
-                        /* Orange accent on hover */
+                        background-color: #fff;
+                        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+                        /* Subtle shadow on hover */
                         transform: scale(1.05);
-                        /* Slight zoom */
-                        border-color: transparent;
                     }
 
                     .mil-brand-circle:hover img {
                         filter: grayscale(0%);
-                        /* Full color on hover */
-                        opacity: 1;
                         transform: scale(1.1);
                     }
                 </style>

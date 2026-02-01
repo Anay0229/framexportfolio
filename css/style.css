@@ -4921,3 +4921,22 @@ html.is-animating .mil-menu-frame {
   position: relative;
   background: rgba(0, 0, 0, 0.05);
 }
+
+/* Brands: show original colours and remove hover grayscale/opacity */
+.mil-brand-circle img,
+.mil-partner-frame img,
+.mil-infinite-show .swiper-slide img {
+  -webkit-filter: none !important;
+  filter: none !important;
+  opacity: 1 !important;
+  transition: none !important;
+}
+
+.mil-brand-circle:hover img,
+.mil-partner-frame:hover img,
+.mil-infinite-show .swiper-slide:hover img {
+  -webkit-filter: none !important;
+  filter: none !important;
+  opacity: 1 !important;
+  transition: none !important;
+}
