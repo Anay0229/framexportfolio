@@ -20,7 +20,7 @@
     <title>FrameX Originals</title>
     <style>
         /* Keep project videos portrait and reasonably sized (responsive) */
-        .mil-video-frame{
+                .mil-video-frame.portrait {
             width: min(42vw, 420px);
             max-width: 420px;
             aspect-ratio: 9/16;
@@ -28,10 +28,18 @@
             object-fit: cover;
             display: block;
             margin: 0 auto;
+            border-radius: 12px;
         }
         /* Ensure the video wrapper centers the portrait video */
         .mil-p-60-0 .container > div > div{ display: flex; justify-content: center; }
     </style>
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-16x16.png">
+    <link rel="shortcut icon" href="assets/favicon_io/favicon.ico">
+    <link rel="manifest" href="assets/favicon_io/site.webmanifest">
+    <meta name="theme-color" content="#000000">
 </head>
 
 <body>
@@ -234,7 +242,7 @@
                                 <li><a href="portfolio-1.html">Portfolio</a></li>
                                 <li><a href="project-1.html">Project</a></li>
                             </ul>
-                            <h1 class="mil-mb-30">11:11<span class="mil-thin">Coffee</span></h1>
+                            <h1 class="mil-mb-30">1111_Coffee <span class="mil-thin"></span></h1>
                             <a href="#project" class="mil-link mil-dark mil-arrow-place mil-down-arrow">
                                 <span>Read more</span>
                             </a>
@@ -250,13 +258,13 @@
                             <div style="overflow: hidden;">
                                 <!-- <div class="mil-image-frame mil-horizontal mil-up mil-mb-30" style="overflow: hidden;"> -->
                                 <video class="mil-video-frame portrait" controls>
-                                    <source src="./assets/portfol/11coffee v1.mp4" type="video/mp4">
+                                    <source src="./assets/portfol/Cinematography_/1111_Coffee.mp4" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
                             </div>
                         </div>
                         <div class="mil-info mil-up">
-                            <div>Client: &nbsp;<span class="mil-dark">11:11 Coffee</span></div>
+                            <div>Category: &nbsp;<span class="mil-dark">Cinematography</span><br>Project: &nbsp;<span class="mil-dark">1111_Coffee</span></div>
                         </div>
                         <!-- <div class="mil-p-60-0">
                             <div class="row">
@@ -336,7 +344,7 @@
                         </div> -->
 
                         <div class="mil-works-nav mil-up">
-                            <a href="#." class="mil-link mil-dark mil-arrow-place mil-icon-left mil-disabled">
+                            <a href="project-22.html" class="mil-link mil-dark mil-arrow-place mil-icon-left">
                                 <span>Prev project</span>
                             </a>
                             <a href="portfolio-1.html" class="mil-link mil-dark">
@@ -579,15 +587,6 @@
     <script src="js/main.js"></script>
 
     <style>
-        .mil-video-frame {
-            -webkit-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            width: 100%;
-            border-radius: 8px;
-            transition: transform 0.3s ease;
-            cursor: pointer;
-        }
 
         .video-container {
             position: relative;

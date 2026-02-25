@@ -20,6 +20,13 @@
     <!-- page name -->
     <title>FrameX Originals</title>
 
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-16x16.png">
+    <link rel="shortcut icon" href="assets/favicon_io/favicon.ico">
+    <link rel="manifest" href="assets/favicon_io/site.webmanifest">
+    <meta name="theme-color" content="#000000">
 </head>
 
 <body>
@@ -238,156 +245,589 @@
                         <div class="mil-lines-place"></div>
                         <div class="mil-lines-place mil-lines-long"></div>
 
-                        <div class="row justify-content-between align-items-center">
-                            <div class="col-lg-5">
 
+                        <!-- Portfolio Filter Bar -->
+                        <style>
+                            .fx-filter-bar {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                gap: 8px;
+                                flex-wrap: wrap;
+                                padding: 12px 20px;
+                                margin-bottom: 48px;
+                                background: rgba(255, 255, 255, 0.85);
+                                backdrop-filter: blur(8px);
+                                border: 1px solid rgba(0, 0, 0, 0.08);
+                                border-radius: 60px;
+                                width: fit-content;
+                                margin-left: auto;
+                                margin-right: auto;
+                                box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+                            }
+
+                            .fx-filter-btn {
+                                appearance: none;
+                                border: none;
+                                outline: none;
+                                background: transparent;
+                                color: #555;
+                                font-family: inherit;
+                                font-size: 11px;
+                                font-weight: 600;
+                                letter-spacing: 0.12em;
+                                text-transform: uppercase;
+                                padding: 8px 22px;
+                                border-radius: 50px;
+                                cursor: pointer;
+                                transition: background 0.25s ease, color 0.25s ease;
+                                white-space: nowrap;
+                            }
+
+                            .fx-filter-btn:hover {
+                                background: rgba(0, 0, 0, 0.06);
+                                color: #000;
+                            }
+
+                            .fx-filter-btn.fx-active {
+                                background: #000;
+                                color: #fff;
+                            }
+
+                            .portfolio-grid-item {
+                                transition: opacity 0.3s ease, transform 0.3s ease;
+                            }
+
+                            .portfolio-grid-item.fx-hidden {
+                                display: none !important;
+                            }
+                        </style>
+
+                        <div class="fx-filter-bar">
+                            <button class="fx-filter-btn fx-active" data-filter="All">All</button>
+                            <button class="fx-filter-btn" data-filter="Cinematography">Cinematography</button>
+                            <button class="fx-filter-btn" data-filter="Commercial and Advertisement">Commercial</button>
+                            <button class="fx-filter-btn" data-filter="Event Coverage">Event Coverage</button>
+                            <button class="fx-filter-btn" data-filter="Motion Graphics">Motion Graphics</button>
+                        </div>
+
+                        <script>
+                            (function initPortfolioFilter() {
+                                function setupFilter() {
+                                    var buttons = document.querySelectorAll('.fx-filter-btn');
+                                    var items = document.querySelectorAll('.portfolio-grid-item');
+                                    if (!buttons.length || !items.length) return;
+
+                                    buttons.forEach(function (btn) {
+                                        btn.addEventListener('click', function () {
+                                            var filter = this.getAttribute('data-filter');
+
+                                            // Update active button
+                                            buttons.forEach(function (b) { b.classList.remove('fx-active'); });
+                                            this.classList.add('fx-active');
+
+                                            // Show / hide items
+                                            items.forEach(function (item) {
+                                                var cat = item.getAttribute('data-category');
+                                                if (filter === 'All' || cat === filter) {
+                                                    item.classList.remove('fx-hidden');
+                                                } else {
+                                                    item.classList.add('fx-hidden');
+                                                }
+                                            });
+                                        });
+                                    });
+                                }
+
+                                // Run immediately for direct page loads
+                                if (document.readyState === 'loading') {
+                                    document.addEventListener('DOMContentLoaded', setupFilter);
+                                } else {
+                                    setupFilter();
+                                }
+                                // Re-run after SWUP replaces content
+                                document.addEventListener('swup:contentReplaced', setupFilter);
+                            })();
+                        </script>
+
+                        <div class="row justify-content-between align-items-center">
+
+                            <div class="col-lg-5 portfolio-grid-item" data-category="Cinematography">
                                 <a href="project-1.html" class="mil-portfolio-item mil-more mil-mb-60">
                                     <div class="mil-cover-frame mil-vert mil-up">
                                         <div class="mil-cover" data-swiper-parallax-scale="1.3">
-                                            <video class="portfolio-video portrait" autoplay muted loop playsinline>
-                                                <source src="./assets/portfol/11coffee v1.mp4" type="video/mp4">
+                                            <video class="portfolio-video portrait" muted loop playsinline
+                                                onmouseover="this.play()" onmouseout="this.pause()">
+                                                <source src="./assets/portfol/Cinematography_/1111_Coffee.mp4"
+                                                    type="video/mp4">
                                                 Your browser does not support the video tag.
                                             </video>
                                         </div>
                                     </div>
                                     <div class="mil-descr">
                                         <div class="mil-labels mil-up mil-mb-15">
-                                            <div class="mil-label mil-upper mil-accent">Cafe</div>
-                                            <div class="mil-label mil-upper">September 2025</div>
+                                            <div class="mil-label mil-upper mil-accent">Cinematography</div>
                                         </div>
-                                        <h4 class="mil-up">11:11 Coffee</h4>
+                                        <h4 class="mil-up">1111_Coffee</h4>
                                     </div>
                                 </a>
-
                             </div>
-                            <div class="col-lg-6">
 
-                                <a href="project-2.html" class="mil-portfolio-item mil-more mil-parallax mil-mb-60"
-                                    data-value-1="60" data-value-2="-60">
-                                    <div class="mil-cover-frame mil-hori mil-up">
+                            <div class="col-lg-6 portfolio-grid-item" data-category="Cinematography">
+                                <a href="project-2.html" class="mil-portfolio-item mil-more mil-mb-60">
+                                    <div class="mil-cover-frame mil-vert mil-up">
                                         <div class="mil-cover" data-swiper-parallax-scale="1.3">
-                                            <video class="portfolio-video landscape" autoplay muted loop playsinline>
-                                                <source src="assets\portfol\brawler.mp4" type="video/mp4">
+                                            <video class="portfolio-video portrait" muted loop playsinline
+                                                onmouseover="this.play()" onmouseout="this.pause()">
+                                                <source src="./assets/portfol/Cinematography_/Deuce.mp4"
+                                                    type="video/mp4">
                                                 Your browser does not support the video tag.
                                             </video>
                                         </div>
                                     </div>
                                     <div class="mil-descr">
                                         <div class="mil-labels mil-up mil-mb-15">
-                                            <div class="mil-label mil-upper mil-accent">Branding</div>
-                                            <div class="mil-label mil-upper">November 2024</div>
+                                            <div class="mil-label mil-upper mil-accent">Cinematography</div>
                                         </div>
-                                        <h4 class="mil-up">Brawler Brothers</h4>
+                                        <h4 class="mil-up">Deuce</h4>
                                     </div>
                                 </a>
-
                             </div>
-                            <div class="col-lg-6">
 
-                                <a href="project-3.html" class="mil-portfolio-item mil-more mil-parallax mil-mb-60"
-                                    data-value-1="60" data-value-2="-60">
-                                    <div class="mil-cover-frame mil-hori mil-up">
+                            <div class="col-lg-6 portfolio-grid-item" data-category="Cinematography">
+                                <a href="project-3.html" class="mil-portfolio-item mil-more mil-mb-60">
+                                    <div class="mil-cover-frame mil-vert mil-up">
                                         <div class="mil-cover" data-swiper-parallax-scale="1.3">
-                                            <video class="portfolio-video landscape" autoplay muted loop playsinline>
-                                                <source src="assets\portfol\medicaps.mp4" type="video/mp4">
+                                            <video class="portfolio-video portrait" muted loop playsinline
+                                                onmouseover="this.play()" onmouseout="this.pause()">
+                                                <source src="./assets/portfol/Cinematography_/Pottery.mp4"
+                                                    type="video/mp4">
                                                 Your browser does not support the video tag.
                                             </video>
                                         </div>
                                     </div>
                                     <div class="mil-descr">
                                         <div class="mil-labels mil-up mil-mb-15">
-                                            <div class="mil-label mil-upper mil-accent">Event</div>
-                                            <div class="mil-label mil-upper">June 2025</div>
+                                            <div class="mil-label mil-upper mil-accent">Cinematography</div>
                                         </div>
-                                        <h4 class="mil-up">Medicaps University</h4>
+                                        <h4 class="mil-up">Pottery</h4>
                                     </div>
                                 </a>
-
                             </div>
-                            <div class="col-lg-5">
 
+                            <div class="col-lg-5 portfolio-grid-item" data-category="Cinematography">
                                 <a href="project-4.html" class="mil-portfolio-item mil-more mil-mb-60">
                                     <div class="mil-cover-frame mil-vert mil-up">
                                         <div class="mil-cover" data-swiper-parallax-scale="1.3">
-                                            <video class="portfolio-video landscape" autoplay muted loop playsinline>
-                                                <source src="assets\portfol\satvik-2.mp4" type="video/mp4">
+                                            <video class="portfolio-video portrait" muted loop playsinline
+                                                onmouseover="this.play()" onmouseout="this.pause()">
+                                                <source src="./assets/portfol/Cinematography_/slomo_comp.mp4"
+                                                    type="video/mp4">
                                                 Your browser does not support the video tag.
                                             </video>
                                         </div>
                                     </div>
                                     <div class="mil-descr">
                                         <div class="mil-labels mil-up mil-mb-15">
-                                            <div class="mil-label mil-upper mil-accent">Advertisement</div>
-                                            <div class="mil-label mil-upper">April 2025</div>
+                                            <div class="mil-label mil-upper mil-accent">Cinematography</div>
                                         </div>
-                                        <h4 class="mil-up">Satvik Hotel</h4>
+                                        <h4 class="mil-up">slomo_comp</h4>
                                     </div>
                                 </a>
-
                             </div>
-                            <div class="col-lg-5">
 
+                            <div class="col-lg-5 portfolio-grid-item" data-category="Cinematography">
                                 <a href="project-5.html" class="mil-portfolio-item mil-more mil-mb-60">
                                     <div class="mil-cover-frame mil-vert mil-up">
                                         <div class="mil-cover" data-swiper-parallax-scale="1.3">
-                                            <video class="portfolio-video landscape" autoplay muted loop playsinline>
-                                                <source src="assets\portfol\Motion Graphics.mp4" type="video/mp4">
+                                            <video class="portfolio-video landscape" muted loop playsinline
+                                                onmouseover="this.play()" onmouseout="this.pause()">
+                                                <source src="./assets/portfol/Cinematography_/Story Cine FO 2.mp4"
+                                                    type="video/mp4">
                                                 Your browser does not support the video tag.
                                             </video>
                                         </div>
                                     </div>
                                     <div class="mil-descr">
                                         <div class="mil-labels mil-up mil-mb-15">
-                                            <div class="mil-label mil-upper mil-accent">Creativity</div>
-                                            <div class="mil-label mil-upper">May 24 2025</div>
+                                            <div class="mil-label mil-upper mil-accent">Cinematography</div>
                                         </div>
-                                        <h4 class="mil-up">Motion Graphics</h4>
+                                        <h4 class="mil-up">Story Cine FO 2</h4>
                                     </div>
                                 </a>
-
                             </div>
-                            <div class="col-lg-6">
 
-                                <a href="project-6.html" class="mil-portfolio-item mil-more mil-parallax mil-mb-60"
-                                    data-value-1="60" data-value-2="-60">
-                                    <div class="mil-cover-frame mil-hori mil-up">
+                            <div class="col-lg-6 portfolio-grid-item" data-category="Cinematography">
+                                <a href="project-6.html" class="mil-portfolio-item mil-more mil-mb-60">
+                                    <div class="mil-cover-frame mil-vert mil-up">
                                         <div class="mil-cover" data-swiper-parallax-scale="1.3">
-                                            <video class="portfolio-video landscape" autoplay muted loop playsinline>
-                                                <source src="assets\portfol\Wedding V2.mp4" type="video/mp4">
+                                            <video class="portfolio-video portrait" muted loop playsinline
+                                                onmouseover="this.play()" onmouseout="this.pause()">
+                                                <source src="./assets/portfol/Cinematography_/Story Cine FO.mp4"
+                                                    type="video/mp4">
                                                 Your browser does not support the video tag.
                                             </video>
                                         </div>
                                     </div>
                                     <div class="mil-descr">
                                         <div class="mil-labels mil-up mil-mb-15">
-                                            <div class="mil-label mil-upper mil-accent">Event</div>
-                                            <div class="mil-label mil-upper">December 2023</div>
+                                            <div class="mil-label mil-upper mil-accent">Cinematography</div>
                                         </div>
-                                        <h4 class="mil-up">Wedding Shoot</h4>
+                                        <h4 class="mil-up">Story Cine FO</h4>
                                     </div>
                                 </a>
-
                             </div>
-                            <div class="col-lg-5">
 
+                            <div class="col-lg-5 portfolio-grid-item" data-category="Cinematography">
                                 <a href="project-7.html" class="mil-portfolio-item mil-more mil-mb-60">
                                     <div class="mil-cover-frame mil-vert mil-up">
                                         <div class="mil-cover" data-swiper-parallax-scale="1.3">
-                                            <video class="portfolio-video portrait" autoplay muted loop playsinline>
-                                                <source src="./assets/portfol/Sixth.webm" type="video/webm">
+                                            <video class="portfolio-video portrait" muted loop playsinline
+                                                onmouseover="this.play()" onmouseout="this.pause()">
+                                                <source src="./assets/portfol/Cinematography_/TheCremiqua2.mp4"
+                                                    type="video/mp4">
                                                 Your browser does not support the video tag.
                                             </video>
                                         </div>
                                     </div>
                                     <div class="mil-descr">
                                         <div class="mil-labels mil-up mil-mb-15">
-                                            <div class="mil-label mil-upper mil-accent">Edit</div>
-                                            <div class="mil-label mil-upper">September 2023</div>
+                                            <div class="mil-label mil-upper mil-accent">Cinematography</div>
                                         </div>
-                                        <h4 class="mil-up">Speed Ramp Edit</h4>
+                                        <h4 class="mil-up">TheCremiqua2</h4>
                                     </div>
                                 </a>
+                            </div>
 
+                            <div class="col-lg-6 portfolio-grid-item" data-category="Commercial and Advertisement">
+                                <a href="project-8.html" class="mil-portfolio-item mil-more mil-mb-60">
+                                    <div class="mil-cover-frame mil-vert mil-up">
+                                        <div class="mil-cover" data-swiper-parallax-scale="1.3">
+                                            <video class="portfolio-video landscape" muted loop playsinline
+                                                onmouseover="this.play()" onmouseout="this.pause()">
+                                                <source
+                                                    src="./assets/portfol/Commercial and Advertisement_/Alice Finance Limited - ALICE FINANCE (1080p, h264).mp4"
+                                                    type="video/mp4">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        </div>
+                                    </div>
+                                    <div class="mil-descr">
+                                        <div class="mil-labels mil-up mil-mb-15">
+                                            <div class="mil-label mil-upper mil-accent">Commercial and Advertisement
+                                            </div>
+                                        </div>
+                                        <h4 class="mil-up">Alice Finance Limited - ALICE FINANCE (1080p, h264)</h4>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-6 portfolio-grid-item" data-category="Commercial and Advertisement">
+                                <a href="project-9.html" class="mil-portfolio-item mil-more mil-mb-60">
+                                    <div class="mil-cover-frame mil-vert mil-up">
+                                        <div class="mil-cover" data-swiper-parallax-scale="1.3">
+                                            <video class="portfolio-video landscape" muted loop playsinline
+                                                onmouseover="this.play()" onmouseout="this.pause()">
+                                                <source src="./assets/portfol/Commercial and Advertisement_/brawler.mp4"
+                                                    type="video/mp4">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        </div>
+                                    </div>
+                                    <div class="mil-descr">
+                                        <div class="mil-labels mil-up mil-mb-15">
+                                            <div class="mil-label mil-upper mil-accent">Commercial and Advertisement
+                                            </div>
+                                        </div>
+                                        <h4 class="mil-up">brawler</h4>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-5 portfolio-grid-item" data-category="Commercial and Advertisement">
+                                <a href="project-10.html" class="mil-portfolio-item mil-more mil-mb-60">
+                                    <div class="mil-cover-frame mil-vert mil-up">
+                                        <div class="mil-cover" data-swiper-parallax-scale="1.3">
+                                            <video class="portfolio-video portrait" muted loop playsinline
+                                                onmouseover="this.play()" onmouseout="this.pause()">
+                                                <source src="./assets/portfol/Commercial and Advertisement_/fourth.mp4"
+                                                    type="video/mp4">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        </div>
+                                    </div>
+                                    <div class="mil-descr">
+                                        <div class="mil-labels mil-up mil-mb-15">
+                                            <div class="mil-label mil-upper mil-accent">Commercial and Advertisement
+                                            </div>
+                                        </div>
+                                        <h4 class="mil-up">fourth</h4>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-5 portfolio-grid-item" data-category="Commercial and Advertisement">
+                                <a href="project-11.html" class="mil-portfolio-item mil-more mil-mb-60">
+                                    <div class="mil-cover-frame mil-vert mil-up">
+                                        <div class="mil-cover" data-swiper-parallax-scale="1.3">
+                                            <video class="portfolio-video landscape" muted loop playsinline
+                                                onmouseover="this.play()" onmouseout="this.pause()">
+                                                <source
+                                                    src="./assets/portfol/Commercial and Advertisement_/Indew_compressed.mp4"
+                                                    type="video/mp4">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        </div>
+                                    </div>
+                                    <div class="mil-descr">
+                                        <div class="mil-labels mil-up mil-mb-15">
+                                            <div class="mil-label mil-upper mil-accent">Commercial and Advertisement
+                                            </div>
+                                        </div>
+                                        <h4 class="mil-up">Indew_compressed</h4>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-6 portfolio-grid-item" data-category="Commercial and Advertisement">
+                                <a href="project-12.html" class="mil-portfolio-item mil-more mil-mb-60">
+                                    <div class="mil-cover-frame mil-vert mil-up">
+                                        <div class="mil-cover" data-swiper-parallax-scale="1.3">
+                                            <video class="portfolio-video portrait" muted loop playsinline
+                                                onmouseover="this.play()" onmouseout="this.pause()">
+                                                <source src="./assets/portfol/Commercial and Advertisement_/Meura.mp4"
+                                                    type="video/mp4">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        </div>
+                                    </div>
+                                    <div class="mil-descr">
+                                        <div class="mil-labels mil-up mil-mb-15">
+                                            <div class="mil-label mil-upper mil-accent">Commercial and Advertisement
+                                            </div>
+                                        </div>
+                                        <h4 class="mil-up">Meura</h4>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-5 portfolio-grid-item" data-category="Commercial and Advertisement">
+                                <a href="project-13.html" class="mil-portfolio-item mil-more mil-mb-60">
+                                    <div class="mil-cover-frame mil-vert mil-up">
+                                        <div class="mil-cover" data-swiper-parallax-scale="1.3">
+                                            <video class="portfolio-video landscape" muted loop playsinline
+                                                onmouseover="this.play()" onmouseout="this.pause()">
+                                                <source src="./assets/portfol/Commercial and Advertisement_/satvik.mp4"
+                                                    type="video/mp4">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        </div>
+                                    </div>
+                                    <div class="mil-descr">
+                                        <div class="mil-labels mil-up mil-mb-15">
+                                            <div class="mil-label mil-upper mil-accent">Commercial and Advertisement
+                                            </div>
+                                        </div>
+                                        <h4 class="mil-up">satvik</h4>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-6 portfolio-grid-item" data-category="Commercial and Advertisement">
+                                <a href="project-14.html" class="mil-portfolio-item mil-more mil-mb-60">
+                                    <div class="mil-cover-frame mil-vert mil-up">
+                                        <div class="mil-cover" data-swiper-parallax-scale="1.3">
+                                            <video class="portfolio-video portrait" muted loop playsinline
+                                                onmouseover="this.play()" onmouseout="this.pause()">
+                                                <source
+                                                    src="./assets/portfol/Commercial and Advertisement_/Satvik_commercial.mp4"
+                                                    type="video/mp4">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        </div>
+                                    </div>
+                                    <div class="mil-descr">
+                                        <div class="mil-labels mil-up mil-mb-15">
+                                            <div class="mil-label mil-upper mil-accent">Commercial and Advertisement
+                                            </div>
+                                        </div>
+                                        <h4 class="mil-up">Satvik_commercial</h4>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-6 portfolio-grid-item" data-category="Commercial and Advertisement">
+                                <a href="project-15.html" class="mil-portfolio-item mil-more mil-mb-60">
+                                    <div class="mil-cover-frame mil-vert mil-up">
+                                        <div class="mil-cover" data-swiper-parallax-scale="1.3">
+                                            <video class="portfolio-video landscape" muted loop playsinline
+                                                onmouseover="this.play()" onmouseout="this.pause()">
+                                                <source
+                                                    src="./assets/portfol/Commercial and Advertisement_/Second_compressed.mp4"
+                                                    type="video/mp4">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        </div>
+                                    </div>
+                                    <div class="mil-descr">
+                                        <div class="mil-labels mil-up mil-mb-15">
+                                            <div class="mil-label mil-upper mil-accent">Commercial and Advertisement
+                                            </div>
+                                        </div>
+                                        <h4 class="mil-up">Second_compressed</h4>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-5 portfolio-grid-item" data-category="Commercial and Advertisement">
+                                <a href="project-16.html" class="mil-portfolio-item mil-more mil-mb-60">
+                                    <div class="mil-cover-frame mil-vert mil-up">
+                                        <div class="mil-cover" data-swiper-parallax-scale="1.3">
+                                            <video class="portfolio-video portrait" muted loop playsinline
+                                                onmouseover="this.play()" onmouseout="this.pause()">
+                                                <source
+                                                    src="./assets/portfol/Commercial and Advertisement_/Speed Ramp Seventh.mp4"
+                                                    type="video/mp4">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        </div>
+                                    </div>
+                                    <div class="mil-descr">
+                                        <div class="mil-labels mil-up mil-mb-15">
+                                            <div class="mil-label mil-upper mil-accent">Commercial and Advertisement
+                                            </div>
+                                        </div>
+                                        <h4 class="mil-up">Speed Ramp Seventh</h4>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-5 portfolio-grid-item" data-category="Commercial and Advertisement">
+                                <a href="project-17.html" class="mil-portfolio-item mil-more mil-mb-60">
+                                    <div class="mil-cover-frame mil-vert mil-up">
+                                        <div class="mil-cover" data-swiper-parallax-scale="1.3">
+                                            <video class="portfolio-video portrait" muted loop playsinline
+                                                onmouseover="this.play()" onmouseout="this.pause()">
+                                                <source
+                                                    src="./assets/portfol/Commercial and Advertisement_/Thecremiqua.mp4"
+                                                    type="video/mp4">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        </div>
+                                    </div>
+                                    <div class="mil-descr">
+                                        <div class="mil-labels mil-up mil-mb-15">
+                                            <div class="mil-label mil-upper mil-accent">Commercial and Advertisement
+                                            </div>
+                                        </div>
+                                        <h4 class="mil-up">Thecremiqua</h4>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-6 portfolio-grid-item" data-category="Event Coverage">
+                                <a href="project-18.html" class="mil-portfolio-item mil-more mil-mb-60">
+                                    <div class="mil-cover-frame mil-vert mil-up">
+                                        <div class="mil-cover" data-swiper-parallax-scale="1.3">
+                                            <video class="portfolio-video portrait" muted loop playsinline
+                                                onmouseover="this.play()" onmouseout="this.pause()">
+                                                <source src="./assets/portfol/Event Coverage_/55 million view.mp4"
+                                                    type="video/mp4">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        </div>
+                                    </div>
+                                    <div class="mil-descr">
+                                        <div class="mil-labels mil-up mil-mb-15">
+                                            <div class="mil-label mil-upper mil-accent">Event Coverage</div>
+                                        </div>
+                                        <h4 class="mil-up">55 million view</h4>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-5 portfolio-grid-item" data-category="Event Coverage">
+                                <a href="project-19.html" class="mil-portfolio-item mil-more mil-mb-60">
+                                    <div class="mil-cover-frame mil-vert mil-up">
+                                        <div class="mil-cover" data-swiper-parallax-scale="1.3">
+                                            <video class="portfolio-video portrait" muted loop playsinline
+                                                onmouseover="this.play()" onmouseout="this.pause()">
+                                                <source src="./assets/portfol/Event Coverage_/third_compressed.mp4"
+                                                    type="video/mp4">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        </div>
+                                    </div>
+                                    <div class="mil-descr">
+                                        <div class="mil-labels mil-up mil-mb-15">
+                                            <div class="mil-label mil-upper mil-accent">Event Coverage</div>
+                                        </div>
+                                        <h4 class="mil-up">third_compressed</h4>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-6 portfolio-grid-item" data-category="Motion Graphics">
+                                <a href="project-20.html" class="mil-portfolio-item mil-more mil-mb-60">
+                                    <div class="mil-cover-frame mil-vert mil-up">
+                                        <div class="mil-cover" data-swiper-parallax-scale="1.3">
+                                            <video class="portfolio-video landscape" muted loop playsinline
+                                                onmouseover="this.play()" onmouseout="this.pause()">
+                                                <source src="./assets/portfol/Motion Graphics_/motiongraphics.mp4"
+                                                    type="video/mp4">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        </div>
+                                    </div>
+                                    <div class="mil-descr">
+                                        <div class="mil-labels mil-up mil-mb-15">
+                                            <div class="mil-label mil-upper mil-accent">Motion Graphics</div>
+                                        </div>
+                                        <h4 class="mil-up">motiongraphics</h4>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-6 portfolio-grid-item" data-category="Motion Graphics">
+                                <a href="project-21.html" class="mil-portfolio-item mil-more mil-mb-60">
+                                    <div class="mil-cover-frame mil-vert mil-up">
+                                        <div class="mil-cover" data-swiper-parallax-scale="1.3">
+                                            <video class="portfolio-video landscape" muted loop playsinline
+                                                onmouseover="this.play()" onmouseout="this.pause()">
+                                                <source src="./assets/portfol/Motion Graphics_/motiongraphics2.mp4"
+                                                    type="video/mp4">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        </div>
+                                    </div>
+                                    <div class="mil-descr">
+                                        <div class="mil-labels mil-up mil-mb-15">
+                                            <div class="mil-label mil-upper mil-accent">Motion Graphics</div>
+                                        </div>
+                                        <h4 class="mil-up">motiongraphics2</h4>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-lg-5 portfolio-grid-item" data-category="Motion Graphics">
+                                <a href="project-22.html" class="mil-portfolio-item mil-more mil-mb-60">
+                                    <div class="mil-cover-frame mil-vert mil-up">
+                                        <div class="mil-cover" data-swiper-parallax-scale="1.3">
+                                            <video class="portfolio-video landscape" muted loop playsinline
+                                                onmouseover="this.play()" onmouseout="this.pause()">
+                                                <source src="./assets/portfol/Motion Graphics_/motiongraphics3.mp4"
+                                                    type="video/mp4">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        </div>
+                                    </div>
+                                    <div class="mil-descr">
+                                        <div class="mil-labels mil-up mil-mb-15">
+                                            <div class="mil-label mil-upper mil-accent">Motion Graphics</div>
+                                        </div>
+                                        <h4 class="mil-up">motiongraphics3</h4>
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     </div>

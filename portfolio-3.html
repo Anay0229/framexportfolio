@@ -18,6 +18,13 @@
   <link rel="stylesheet" href="css/style.css" />
   <!-- page name -->
   <title>FrameX Originals</title>
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-16x16.png">
+    <link rel="shortcut icon" href="assets/favicon_io/favicon.ico">
+    <link rel="manifest" href="assets/favicon_io/site.webmanifest">
+    <meta name="theme-color" content="#000000">
 </head>
 
 <body>
@@ -207,46 +214,150 @@
               style="top: -60px; right: -4px"></div>
           </div>
           <div class="container">
+
+            <!-- Portfolio Filter Bar -->
+            <style>
+              .fx-filter-bar {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 8px;
+                flex-wrap: wrap;
+                padding: 12px 20px;
+                margin-bottom: 48px;
+                background: rgba(255, 255, 255, 0.85);
+                backdrop-filter: blur(8px);
+                border: 1px solid rgba(0, 0, 0, 0.08);
+                border-radius: 60px;
+                width: fit-content;
+                margin-left: auto;
+                margin-right: auto;
+                box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+              }
+
+              .fx-filter-btn {
+                appearance: none;
+                border: none;
+                outline: none;
+                background: transparent;
+                color: #555;
+                font-family: inherit;
+                font-size: 11px;
+                font-weight: 600;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                padding: 8px 22px;
+                border-radius: 50px;
+                cursor: pointer;
+                transition: background 0.25s ease, color 0.25s ease;
+                white-space: nowrap;
+              }
+
+              .fx-filter-btn:hover {
+                background: rgba(0, 0, 0, 0.06);
+                color: #000;
+              }
+
+              .fx-filter-btn.fx-active {
+                background: #000;
+                color: #fff;
+              }
+            </style>
+
+            <div class="fx-filter-bar">
+              <button class="fx-filter-btn fx-active" data-filter="All">All</button>
+              <button class="fx-filter-btn" data-filter="Cinematography">Cinematography</button>
+              <button class="fx-filter-btn" data-filter="Commercial and Advertisement">Commercial</button>
+              <button class="fx-filter-btn" data-filter="Event Coverage">Event Coverage</button>
+              <button class="fx-filter-btn" data-filter="Motion Graphics">Motion Graphics</button>
+            </div>
+
+            <script>
+              // Wait for window.load so Swiper from main.js is already initialized
+              window.addEventListener('load', function () {
+                initPortfolio3Filter();
+              });
+              // Also re-run after SWUP page transitions
+              document.addEventListener('swup:contentReplaced', function () {
+                // Give main.js swiper init a tick to run first
+                setTimeout(initPortfolio3Filter, 100);
+              });
+
+              function initPortfolio3Filter() {
+                var buttons = document.querySelectorAll('.fx-filter-btn');
+                var wrapper = document.querySelector('.mil-portfolio-slider .swiper-wrapper');
+                var swiperContainer = document.querySelector('.mil-portfolio-slider');
+                if (!buttons.length || !wrapper || !swiperContainer) return;
+
+                // Cache all original slides (once)
+                if (!window._fxSlideCache) {
+                  window._fxSlideCache = Array.from(wrapper.querySelectorAll('.portfolio-swiper-item')).map(function (s) {
+                    return { cat: s.getAttribute('data-category'), html: s.outerHTML };
+                  });
+                }
+
+                buttons.forEach(function (btn) {
+                  // Remove old listeners by cloning
+                  var fresh = btn.cloneNode(true);
+                  btn.parentNode.replaceChild(fresh, btn);
+                });
+
+                // Re-query after clone
+                buttons = document.querySelectorAll('.fx-filter-btn');
+
+                buttons.forEach(function (btn) {
+                  btn.addEventListener('click', function () {
+                    var filter = this.getAttribute('data-filter');
+
+                    // Update active state
+                    document.querySelectorAll('.fx-filter-btn').forEach(function (b) { b.classList.remove('fx-active'); });
+                    this.classList.add('fx-active');
+
+                    // Destroy existing Swiper instance
+                    if (swiperContainer.swiper) {
+                      swiperContainer.swiper.destroy(true, true);
+                    }
+
+                    // Rebuild wrapper with matching slides only
+                    var matching = window._fxSlideCache.filter(function (s) {
+                      return filter === 'All' || s.cat === filter;
+                    });
+                    wrapper.innerHTML = matching.map(function (s) { return s.html; }).join('');
+
+                    // Reinitialize Swiper with same config as main.js
+                    new Swiper(swiperContainer, {
+                      slidesPerView: 1,
+                      spaceBetween: 0,
+                      speed: 800,
+                      parallax: true,
+                      mousewheel: { enable: true },
+                      navigation: {
+                        nextEl: '.mil-portfolio-next',
+                        prevEl: '.mil-portfolio-prev',
+                      },
+                      pagination: {
+                        el: '.swiper-portfolio-pagination',
+                        type: 'fraction',
+                      },
+                    });
+                  });
+                });
+              }
+            </script>
+
             <div class="row align-items-end">
+
               <div class="col-lg-9">
                 <div class="swiper-container mil-portfolio-slider mil-up">
                   <div class="swiper-wrapper">
-                    <div class="swiper-slide">
+
+                    <div class="swiper-slide portfolio-swiper-item" data-category="Cinematography">
                       <div class="mil-portfolio-item mil-slider-item" data-swiper-parallax="-30">
                         <div class="mil-cover-frame mil-drag">
                           <div class="mil-cover" data-swiper-parallax-scale="1.3">
-                            <video class="portfolio-video portrait" autoplay muted loop playsinline>
-                              <source src="./assets/portfol/11coffee v1.mp4" type="video/mp4" />
-                              Your browser does not support the video tag.
-                            </video>
-                          </div>
-                        </div>
-                        <div class="mil-descr" data-swiper-parallax-x="104%" data-swiper-parallax-opacity="0">
-                          <div class="mil-descr-text" data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
-                            <!-- <div class="mil-labels mil-mb-15">
-                              <div class="mil-label mil-upper mil-accent">
-                                TECHNOLOGY
-                              </div>
-                              <div class="mil-label mil-upper">
-                                may 24 2023
-                              </div>
-                            </div> -->
-                            <h5>11:11 Coffee</h5>
-                          </div>
-                          <div data-swiper-parallax-y="120" data-swiper-parallax-opacity="0">
-                            <a href="project-1.html" class="mil-button mil-arrow-place">
-                              <span>View Project</span>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="swiper-slide">
-                      <div class="mil-portfolio-item mil-slider-item" data-swiper-parallax="-30">
-                        <div class="mil-cover-frame mil-drag">
-                          <div class="mil-cover" data-swiper-parallax-scale="1.3">
-                            <video class="portfolio-video landscape" autoplay muted loop playsinline>
-                              <source src="assets\portfol\brawler.mp4" type="video/mp4" />
+                            <video class="portfolio-video portrait" muted loop playsinline onmouseover="this.play()"
+                              onmouseout="this.pause()">
+                              <source src="./assets/portfol/Cinematography_/1111_Coffee.mp4" type="video/mp4" />
                               Your browser does not support the video tag.
                             </video>
                           </div>
@@ -254,10 +365,36 @@
                         <div class="mil-descr" data-swiper-parallax-x="104%" data-swiper-parallax-opacity="0">
                           <div class="mil-descr-text" data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
                             <div class="mil-labels mil-mb-15">
-                              <!-- <div class="mil-label mil-upper mil-accent">TECHNOLOGY</div> -->
-                              <!-- <div class="mil-label mil-upper">may 24 2023</div> -->
+                              <div class="mil-label mil-upper mil-accent">Cinematography</div>
                             </div>
-                            <h5>Brawler Brothers</h5>
+                            <h5>1111_Coffee</h5>
+                          </div>
+                          <div data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
+                            <a href="project-1.html" class="mil-button mil-arrow-place">
+                              <span>View Project</span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="swiper-slide portfolio-swiper-item" data-category="Cinematography">
+                      <div class="mil-portfolio-item mil-slider-item" data-swiper-parallax="-30">
+                        <div class="mil-cover-frame mil-drag">
+                          <div class="mil-cover" data-swiper-parallax-scale="1.3">
+                            <video class="portfolio-video portrait" muted loop playsinline onmouseover="this.play()"
+                              onmouseout="this.pause()">
+                              <source src="./assets/portfol/Cinematography_/Deuce.mp4" type="video/mp4" />
+                              Your browser does not support the video tag.
+                            </video>
+                          </div>
+                        </div>
+                        <div class="mil-descr" data-swiper-parallax-x="104%" data-swiper-parallax-opacity="0">
+                          <div class="mil-descr-text" data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
+                            <div class="mil-labels mil-mb-15">
+                              <div class="mil-label mil-upper mil-accent">Cinematography</div>
+                            </div>
+                            <h5>Deuce</h5>
                           </div>
                           <div data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
                             <a href="project-2.html" class="mil-button mil-arrow-place">
@@ -267,13 +404,14 @@
                         </div>
                       </div>
                     </div>
-                    <div class="swiper-slide">
+
+                    <div class="swiper-slide portfolio-swiper-item" data-category="Cinematography">
                       <div class="mil-portfolio-item mil-slider-item" data-swiper-parallax="-30">
                         <div class="mil-cover-frame mil-drag">
                           <div class="mil-cover" data-swiper-parallax-scale="1.3">
-                            <video class="portfolio-video landscape" autoplay muted loop playsinline
-                              controlslist="nodownload" disablePictureInPicture>
-                              <source src="assets\portfol\medicaps.mp4" type="video/mp4" />
+                            <video class="portfolio-video portrait" muted loop playsinline onmouseover="this.play()"
+                              onmouseout="this.pause()">
+                              <source src="./assets/portfol/Cinematography_/Pottery.mp4" type="video/mp4" />
                               Your browser does not support the video tag.
                             </video>
                           </div>
@@ -281,10 +419,9 @@
                         <div class="mil-descr" data-swiper-parallax-x="104%" data-swiper-parallax-opacity="0">
                           <div class="mil-descr-text" data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
                             <div class="mil-labels mil-mb-15">
-                              <!-- <div class="mil-label mil-upper mil-accent">TECHNOLOGY</div>
-                                                            <div class="mil-label mil-upper">may 24 2023</div> -->
+                              <div class="mil-label mil-upper mil-accent">Cinematography</div>
                             </div>
-                            <h5>Medicaps University</h5>
+                            <h5>Pottery</h5>
                           </div>
                           <div data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
                             <a href="project-3.html" class="mil-button mil-arrow-place">
@@ -294,12 +431,14 @@
                         </div>
                       </div>
                     </div>
-                    <div class="swiper-slide">
+
+                    <div class="swiper-slide portfolio-swiper-item" data-category="Cinematography">
                       <div class="mil-portfolio-item mil-slider-item" data-swiper-parallax="-30">
                         <div class="mil-cover-frame mil-drag">
                           <div class="mil-cover" data-swiper-parallax-scale="1.3">
-                            <video class="portfolio-video landscape" autoplay muted loop playsinline>
-                              <source src="assets\portfol\satvik.mp4" type="video/mp4" />
+                            <video class="portfolio-video portrait" muted loop playsinline onmouseover="this.play()"
+                              onmouseout="this.pause()">
+                              <source src="./assets/portfol/Cinematography_/slomo_comp.mp4" type="video/mp4" />
                               Your browser does not support the video tag.
                             </video>
                           </div>
@@ -307,10 +446,9 @@
                         <div class="mil-descr" data-swiper-parallax-x="104%" data-swiper-parallax-opacity="0">
                           <div class="mil-descr-text" data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
                             <div class="mil-labels mil-mb-15">
-                              <!-- <div class="mil-label mil-upper mil-accent">TECHNOLOGY</div>
-                                                            <div class="mil-label mil-upper">may 24 2023</div> -->
+                              <div class="mil-label mil-upper mil-accent">Cinematography</div>
                             </div>
-                            <h5>Satvik Hotel</h5>
+                            <h5>slomo_comp</h5>
                           </div>
                           <div data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
                             <a href="project-4.html" class="mil-button mil-arrow-place">
@@ -320,27 +458,24 @@
                         </div>
                       </div>
                     </div>
-                    <div class="swiper-slide">
+
+                    <div class="swiper-slide portfolio-swiper-item" data-category="Cinematography">
                       <div class="mil-portfolio-item mil-slider-item" data-swiper-parallax="-30">
                         <div class="mil-cover-frame mil-drag">
                           <div class="mil-cover" data-swiper-parallax-scale="1.3">
-                            <video class="portfolio-video landscape" autoplay muted loop playsinline>
-                              <source src="assets\portfol\Motion Graphics.mp4" type="video/mp4" />
+                            <video class="portfolio-video landscape" muted loop playsinline onmouseover="this.play()"
+                              onmouseout="this.pause()">
+                              <source src="./assets/portfol/Cinematography_/Story Cine FO 2.mp4" type="video/mp4" />
                               Your browser does not support the video tag.
                             </video>
                           </div>
                         </div>
                         <div class="mil-descr" data-swiper-parallax-x="104%" data-swiper-parallax-opacity="0">
                           <div class="mil-descr-text" data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
-                            <!-- <div class="mil-labels mil-mb-15">
-                              <div class="mil-label mil-upper mil-accent">
-                                TECHNOLOGY
-                              </div>
-                              <div class="mil-label mil-upper">
-                                may 24 2023
-                              </div>
-                            </div> -->
-                            <h5>Motion Graphics</h5>
+                            <div class="mil-labels mil-mb-15">
+                              <div class="mil-label mil-upper mil-accent">Cinematography</div>
+                            </div>
+                            <h5>Story Cine FO 2</h5>
                           </div>
                           <div data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
                             <a href="project-5.html" class="mil-button mil-arrow-place">
@@ -350,27 +485,24 @@
                         </div>
                       </div>
                     </div>
-                    <div class="swiper-slide">
+
+                    <div class="swiper-slide portfolio-swiper-item" data-category="Cinematography">
                       <div class="mil-portfolio-item mil-slider-item" data-swiper-parallax="-30">
                         <div class="mil-cover-frame mil-drag">
                           <div class="mil-cover" data-swiper-parallax-scale="1.3">
-                            <video class="portfolio-video landscape" autoplay muted loop playsinline>
-                              <source src="assets\portfol\Wedding V2.mp4" type="video/mp4" />
+                            <video class="portfolio-video portrait" muted loop playsinline onmouseover="this.play()"
+                              onmouseout="this.pause()">
+                              <source src="./assets/portfol/Cinematography_/Story Cine FO.mp4" type="video/mp4" />
                               Your browser does not support the video tag.
                             </video>
                           </div>
                         </div>
                         <div class="mil-descr" data-swiper-parallax-x="104%" data-swiper-parallax-opacity="0">
                           <div class="mil-descr-text" data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
-                            <!-- <div class="mil-labels mil-mb-15">
-                              <div class="mil-label mil-upper mil-accent">
-                                TECHNOLOGY
-                              </div>
-                              <div class="mil-label mil-upper">
-                                may 24 2023
-                              </div>
-                            </div> -->
-                            <h5>Wedding Shootedding Shoot</h5>
+                            <div class="mil-labels mil-mb-15">
+                              <div class="mil-label mil-upper mil-accent">Cinematography</div>
+                            </div>
+                            <h5>Story Cine FO</h5>
                           </div>
                           <div data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
                             <a href="project-6.html" class="mil-button mil-arrow-place">
@@ -380,30 +512,442 @@
                         </div>
                       </div>
                     </div>
-                    <div class="swiper-slide">
+
+                    <div class="swiper-slide portfolio-swiper-item" data-category="Cinematography">
                       <div class="mil-portfolio-item mil-slider-item" data-swiper-parallax="-30">
                         <div class="mil-cover-frame mil-drag">
                           <div class="mil-cover" data-swiper-parallax-scale="1.3">
-                            <video class="portfolio-video portrait" autoplay muted loop playsinline>
-                              <source src="./assets/portfol/Sixth.webm" type="video/webm" />
+                            <video class="portfolio-video portrait" muted loop playsinline onmouseover="this.play()"
+                              onmouseout="this.pause()">
+                              <source src="./assets/portfol/Cinematography_/TheCremiqua2.mp4" type="video/mp4" />
                               Your browser does not support the video tag.
                             </video>
                           </div>
                         </div>
                         <div class="mil-descr" data-swiper-parallax-x="104%" data-swiper-parallax-opacity="0">
                           <div class="mil-descr-text" data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
-                            <!-- <div class="mil-labels mil-mb-15">
-                              <div class="mil-label mil-upper mil-accent">
-                                TECHNOLOGY
-                              </div>
-                              <div class="mil-label mil-upper">
-                                may 24 2023
-                              </div>
-                            </div> -->
-                            <h5>Speed Ramp</h5>
+                            <div class="mil-labels mil-mb-15">
+                              <div class="mil-label mil-upper mil-accent">Cinematography</div>
+                            </div>
+                            <h5>TheCremiqua2</h5>
                           </div>
                           <div data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
                             <a href="project-7.html" class="mil-button mil-arrow-place">
+                              <span>View Project</span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="swiper-slide portfolio-swiper-item" data-category="Commercial and Advertisement">
+                      <div class="mil-portfolio-item mil-slider-item" data-swiper-parallax="-30">
+                        <div class="mil-cover-frame mil-drag">
+                          <div class="mil-cover" data-swiper-parallax-scale="1.3">
+                            <video class="portfolio-video landscape" muted loop playsinline onmouseover="this.play()"
+                              onmouseout="this.pause()">
+                              <source
+                                src="./assets/portfol/Commercial and Advertisement_/Alice Finance Limited - ALICE FINANCE (1080p, h264).mp4"
+                                type="video/mp4" />
+                              Your browser does not support the video tag.
+                            </video>
+                          </div>
+                        </div>
+                        <div class="mil-descr" data-swiper-parallax-x="104%" data-swiper-parallax-opacity="0">
+                          <div class="mil-descr-text" data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
+                            <div class="mil-labels mil-mb-15">
+                              <div class="mil-label mil-upper mil-accent">Commercial and Advertisement</div>
+                            </div>
+                            <h5>Alice Finance Limited - ALICE FINANCE (1080p, h264)</h5>
+                          </div>
+                          <div data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
+                            <a href="project-8.html" class="mil-button mil-arrow-place">
+                              <span>View Project</span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="swiper-slide portfolio-swiper-item" data-category="Commercial and Advertisement">
+                      <div class="mil-portfolio-item mil-slider-item" data-swiper-parallax="-30">
+                        <div class="mil-cover-frame mil-drag">
+                          <div class="mil-cover" data-swiper-parallax-scale="1.3">
+                            <video class="portfolio-video landscape" muted loop playsinline onmouseover="this.play()"
+                              onmouseout="this.pause()">
+                              <source src="./assets/portfol/Commercial and Advertisement_/brawler.mp4"
+                                type="video/mp4" />
+                              Your browser does not support the video tag.
+                            </video>
+                          </div>
+                        </div>
+                        <div class="mil-descr" data-swiper-parallax-x="104%" data-swiper-parallax-opacity="0">
+                          <div class="mil-descr-text" data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
+                            <div class="mil-labels mil-mb-15">
+                              <div class="mil-label mil-upper mil-accent">Commercial and Advertisement</div>
+                            </div>
+                            <h5>brawler</h5>
+                          </div>
+                          <div data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
+                            <a href="project-9.html" class="mil-button mil-arrow-place">
+                              <span>View Project</span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="swiper-slide portfolio-swiper-item" data-category="Commercial and Advertisement">
+                      <div class="mil-portfolio-item mil-slider-item" data-swiper-parallax="-30">
+                        <div class="mil-cover-frame mil-drag">
+                          <div class="mil-cover" data-swiper-parallax-scale="1.3">
+                            <video class="portfolio-video portrait" muted loop playsinline onmouseover="this.play()"
+                              onmouseout="this.pause()">
+                              <source src="./assets/portfol/Commercial and Advertisement_/fourth.mp4"
+                                type="video/mp4" />
+                              Your browser does not support the video tag.
+                            </video>
+                          </div>
+                        </div>
+                        <div class="mil-descr" data-swiper-parallax-x="104%" data-swiper-parallax-opacity="0">
+                          <div class="mil-descr-text" data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
+                            <div class="mil-labels mil-mb-15">
+                              <div class="mil-label mil-upper mil-accent">Commercial and Advertisement</div>
+                            </div>
+                            <h5>fourth</h5>
+                          </div>
+                          <div data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
+                            <a href="project-10.html" class="mil-button mil-arrow-place">
+                              <span>View Project</span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="swiper-slide portfolio-swiper-item" data-category="Commercial and Advertisement">
+                      <div class="mil-portfolio-item mil-slider-item" data-swiper-parallax="-30">
+                        <div class="mil-cover-frame mil-drag">
+                          <div class="mil-cover" data-swiper-parallax-scale="1.3">
+                            <video class="portfolio-video landscape" muted loop playsinline onmouseover="this.play()"
+                              onmouseout="this.pause()">
+                              <source src="./assets/portfol/Commercial and Advertisement_/Indew_compressed.mp4"
+                                type="video/mp4" />
+                              Your browser does not support the video tag.
+                            </video>
+                          </div>
+                        </div>
+                        <div class="mil-descr" data-swiper-parallax-x="104%" data-swiper-parallax-opacity="0">
+                          <div class="mil-descr-text" data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
+                            <div class="mil-labels mil-mb-15">
+                              <div class="mil-label mil-upper mil-accent">Commercial and Advertisement</div>
+                            </div>
+                            <h5>Indew_compressed</h5>
+                          </div>
+                          <div data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
+                            <a href="project-11.html" class="mil-button mil-arrow-place">
+                              <span>View Project</span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="swiper-slide portfolio-swiper-item" data-category="Commercial and Advertisement">
+                      <div class="mil-portfolio-item mil-slider-item" data-swiper-parallax="-30">
+                        <div class="mil-cover-frame mil-drag">
+                          <div class="mil-cover" data-swiper-parallax-scale="1.3">
+                            <video class="portfolio-video portrait" muted loop playsinline onmouseover="this.play()"
+                              onmouseout="this.pause()">
+                              <source src="./assets/portfol/Commercial and Advertisement_/Meura.mp4" type="video/mp4" />
+                              Your browser does not support the video tag.
+                            </video>
+                          </div>
+                        </div>
+                        <div class="mil-descr" data-swiper-parallax-x="104%" data-swiper-parallax-opacity="0">
+                          <div class="mil-descr-text" data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
+                            <div class="mil-labels mil-mb-15">
+                              <div class="mil-label mil-upper mil-accent">Commercial and Advertisement</div>
+                            </div>
+                            <h5>Meura</h5>
+                          </div>
+                          <div data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
+                            <a href="project-12.html" class="mil-button mil-arrow-place">
+                              <span>View Project</span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="swiper-slide portfolio-swiper-item" data-category="Commercial and Advertisement">
+                      <div class="mil-portfolio-item mil-slider-item" data-swiper-parallax="-30">
+                        <div class="mil-cover-frame mil-drag">
+                          <div class="mil-cover" data-swiper-parallax-scale="1.3">
+                            <video class="portfolio-video landscape" muted loop playsinline onmouseover="this.play()"
+                              onmouseout="this.pause()">
+                              <source src="./assets/portfol/Commercial and Advertisement_/satvik.mp4"
+                                type="video/mp4" />
+                              Your browser does not support the video tag.
+                            </video>
+                          </div>
+                        </div>
+                        <div class="mil-descr" data-swiper-parallax-x="104%" data-swiper-parallax-opacity="0">
+                          <div class="mil-descr-text" data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
+                            <div class="mil-labels mil-mb-15">
+                              <div class="mil-label mil-upper mil-accent">Commercial and Advertisement</div>
+                            </div>
+                            <h5>satvik</h5>
+                          </div>
+                          <div data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
+                            <a href="project-13.html" class="mil-button mil-arrow-place">
+                              <span>View Project</span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="swiper-slide portfolio-swiper-item" data-category="Commercial and Advertisement">
+                      <div class="mil-portfolio-item mil-slider-item" data-swiper-parallax="-30">
+                        <div class="mil-cover-frame mil-drag">
+                          <div class="mil-cover" data-swiper-parallax-scale="1.3">
+                            <video class="portfolio-video portrait" muted loop playsinline onmouseover="this.play()"
+                              onmouseout="this.pause()">
+                              <source src="./assets/portfol/Commercial and Advertisement_/Satvik_commercial.mp4"
+                                type="video/mp4" />
+                              Your browser does not support the video tag.
+                            </video>
+                          </div>
+                        </div>
+                        <div class="mil-descr" data-swiper-parallax-x="104%" data-swiper-parallax-opacity="0">
+                          <div class="mil-descr-text" data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
+                            <div class="mil-labels mil-mb-15">
+                              <div class="mil-label mil-upper mil-accent">Commercial and Advertisement</div>
+                            </div>
+                            <h5>Satvik_commercial</h5>
+                          </div>
+                          <div data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
+                            <a href="project-14.html" class="mil-button mil-arrow-place">
+                              <span>View Project</span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="swiper-slide portfolio-swiper-item" data-category="Commercial and Advertisement">
+                      <div class="mil-portfolio-item mil-slider-item" data-swiper-parallax="-30">
+                        <div class="mil-cover-frame mil-drag">
+                          <div class="mil-cover" data-swiper-parallax-scale="1.3">
+                            <video class="portfolio-video landscape" muted loop playsinline onmouseover="this.play()"
+                              onmouseout="this.pause()">
+                              <source src="./assets/portfol/Commercial and Advertisement_/Second_compressed.mp4"
+                                type="video/mp4" />
+                              Your browser does not support the video tag.
+                            </video>
+                          </div>
+                        </div>
+                        <div class="mil-descr" data-swiper-parallax-x="104%" data-swiper-parallax-opacity="0">
+                          <div class="mil-descr-text" data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
+                            <div class="mil-labels mil-mb-15">
+                              <div class="mil-label mil-upper mil-accent">Commercial and Advertisement</div>
+                            </div>
+                            <h5>Second_compressed</h5>
+                          </div>
+                          <div data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
+                            <a href="project-15.html" class="mil-button mil-arrow-place">
+                              <span>View Project</span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="swiper-slide portfolio-swiper-item" data-category="Commercial and Advertisement">
+                      <div class="mil-portfolio-item mil-slider-item" data-swiper-parallax="-30">
+                        <div class="mil-cover-frame mil-drag">
+                          <div class="mil-cover" data-swiper-parallax-scale="1.3">
+                            <video class="portfolio-video portrait" muted loop playsinline onmouseover="this.play()"
+                              onmouseout="this.pause()">
+                              <source src="./assets/portfol/Commercial and Advertisement_/Speed Ramp Seventh.mp4"
+                                type="video/mp4" />
+                              Your browser does not support the video tag.
+                            </video>
+                          </div>
+                        </div>
+                        <div class="mil-descr" data-swiper-parallax-x="104%" data-swiper-parallax-opacity="0">
+                          <div class="mil-descr-text" data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
+                            <div class="mil-labels mil-mb-15">
+                              <div class="mil-label mil-upper mil-accent">Commercial and Advertisement</div>
+                            </div>
+                            <h5>Speed Ramp Seventh</h5>
+                          </div>
+                          <div data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
+                            <a href="project-16.html" class="mil-button mil-arrow-place">
+                              <span>View Project</span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="swiper-slide portfolio-swiper-item" data-category="Commercial and Advertisement">
+                      <div class="mil-portfolio-item mil-slider-item" data-swiper-parallax="-30">
+                        <div class="mil-cover-frame mil-drag">
+                          <div class="mil-cover" data-swiper-parallax-scale="1.3">
+                            <video class="portfolio-video portrait" muted loop playsinline onmouseover="this.play()"
+                              onmouseout="this.pause()">
+                              <source src="./assets/portfol/Commercial and Advertisement_/Thecremiqua.mp4"
+                                type="video/mp4" />
+                              Your browser does not support the video tag.
+                            </video>
+                          </div>
+                        </div>
+                        <div class="mil-descr" data-swiper-parallax-x="104%" data-swiper-parallax-opacity="0">
+                          <div class="mil-descr-text" data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
+                            <div class="mil-labels mil-mb-15">
+                              <div class="mil-label mil-upper mil-accent">Commercial and Advertisement</div>
+                            </div>
+                            <h5>Thecremiqua</h5>
+                          </div>
+                          <div data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
+                            <a href="project-17.html" class="mil-button mil-arrow-place">
+                              <span>View Project</span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="swiper-slide portfolio-swiper-item" data-category="Event Coverage">
+                      <div class="mil-portfolio-item mil-slider-item" data-swiper-parallax="-30">
+                        <div class="mil-cover-frame mil-drag">
+                          <div class="mil-cover" data-swiper-parallax-scale="1.3">
+                            <video class="portfolio-video portrait" muted loop playsinline onmouseover="this.play()"
+                              onmouseout="this.pause()">
+                              <source src="./assets/portfol/Event Coverage_/55 million view.mp4" type="video/mp4" />
+                              Your browser does not support the video tag.
+                            </video>
+                          </div>
+                        </div>
+                        <div class="mil-descr" data-swiper-parallax-x="104%" data-swiper-parallax-opacity="0">
+                          <div class="mil-descr-text" data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
+                            <div class="mil-labels mil-mb-15">
+                              <div class="mil-label mil-upper mil-accent">Event Coverage</div>
+                            </div>
+                            <h5>55 million view</h5>
+                          </div>
+                          <div data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
+                            <a href="project-18.html" class="mil-button mil-arrow-place">
+                              <span>View Project</span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="swiper-slide portfolio-swiper-item" data-category="Event Coverage">
+                      <div class="mil-portfolio-item mil-slider-item" data-swiper-parallax="-30">
+                        <div class="mil-cover-frame mil-drag">
+                          <div class="mil-cover" data-swiper-parallax-scale="1.3">
+                            <video class="portfolio-video portrait" muted loop playsinline onmouseover="this.play()"
+                              onmouseout="this.pause()">
+                              <source src="./assets/portfol/Event Coverage_/third_compressed.mp4" type="video/mp4" />
+                              Your browser does not support the video tag.
+                            </video>
+                          </div>
+                        </div>
+                        <div class="mil-descr" data-swiper-parallax-x="104%" data-swiper-parallax-opacity="0">
+                          <div class="mil-descr-text" data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
+                            <div class="mil-labels mil-mb-15">
+                              <div class="mil-label mil-upper mil-accent">Event Coverage</div>
+                            </div>
+                            <h5>third_compressed</h5>
+                          </div>
+                          <div data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
+                            <a href="project-19.html" class="mil-button mil-arrow-place">
+                              <span>View Project</span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="swiper-slide portfolio-swiper-item" data-category="Motion Graphics">
+                      <div class="mil-portfolio-item mil-slider-item" data-swiper-parallax="-30">
+                        <div class="mil-cover-frame mil-drag">
+                          <div class="mil-cover" data-swiper-parallax-scale="1.3">
+                            <video class="portfolio-video landscape" muted loop playsinline onmouseover="this.play()"
+                              onmouseout="this.pause()">
+                              <source src="./assets/portfol/Motion Graphics_/motiongraphics.mp4" type="video/mp4" />
+                              Your browser does not support the video tag.
+                            </video>
+                          </div>
+                        </div>
+                        <div class="mil-descr" data-swiper-parallax-x="104%" data-swiper-parallax-opacity="0">
+                          <div class="mil-descr-text" data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
+                            <div class="mil-labels mil-mb-15">
+                              <div class="mil-label mil-upper mil-accent">Motion Graphics</div>
+                            </div>
+                            <h5>motiongraphics</h5>
+                          </div>
+                          <div data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
+                            <a href="project-20.html" class="mil-button mil-arrow-place">
+                              <span>View Project</span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="swiper-slide portfolio-swiper-item" data-category="Motion Graphics">
+                      <div class="mil-portfolio-item mil-slider-item" data-swiper-parallax="-30">
+                        <div class="mil-cover-frame mil-drag">
+                          <div class="mil-cover" data-swiper-parallax-scale="1.3">
+                            <video class="portfolio-video landscape" muted loop playsinline onmouseover="this.play()"
+                              onmouseout="this.pause()">
+                              <source src="./assets/portfol/Motion Graphics_/motiongraphics2.mp4" type="video/mp4" />
+                              Your browser does not support the video tag.
+                            </video>
+                          </div>
+                        </div>
+                        <div class="mil-descr" data-swiper-parallax-x="104%" data-swiper-parallax-opacity="0">
+                          <div class="mil-descr-text" data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
+                            <div class="mil-labels mil-mb-15">
+                              <div class="mil-label mil-upper mil-accent">Motion Graphics</div>
+                            </div>
+                            <h5>motiongraphics2</h5>
+                          </div>
+                          <div data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
+                            <a href="project-21.html" class="mil-button mil-arrow-place">
+                              <span>View Project</span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="swiper-slide portfolio-swiper-item" data-category="Motion Graphics">
+                      <div class="mil-portfolio-item mil-slider-item" data-swiper-parallax="-30">
+                        <div class="mil-cover-frame mil-drag">
+                          <div class="mil-cover" data-swiper-parallax-scale="1.3">
+                            <video class="portfolio-video landscape" muted loop playsinline onmouseover="this.play()"
+                              onmouseout="this.pause()">
+                              <source src="./assets/portfol/Motion Graphics_/motiongraphics3.mp4" type="video/mp4" />
+                              Your browser does not support the video tag.
+                            </video>
+                          </div>
+                        </div>
+                        <div class="mil-descr" data-swiper-parallax-x="104%" data-swiper-parallax-opacity="0">
+                          <div class="mil-descr-text" data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
+                            <div class="mil-labels mil-mb-15">
+                              <div class="mil-label mil-upper mil-accent">Motion Graphics</div>
+                            </div>
+                            <h5>motiongraphics3</h5>
+                          </div>
+                          <div data-swiper-parallax-y="100%" data-swiper-parallax-opacity="0">
+                            <a href="project-22.html" class="mil-button mil-arrow-place">
                               <span>View Project</span>
                             </a>
                           </div>
