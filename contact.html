@@ -199,85 +199,319 @@
         <div class="mil-content">
             <div id="swupMain" class="mil-main-transition">
 
-                <!-- banner -->
-                <div class="mil-inner-banner mil-p-0-120">
-                    <div class="mil-banner-content mil-center mil-up">
-                        <div class="container">
-                            <ul class="mil-breadcrumbs mil-center mil-mb-60">
-                                <li><a href="index.html">Homepage</a></li>
-                                <li><a href="contact.html">Contact</a></li>
-                            </ul>
-                            <h1 class="mil-mb-60">Get in touch!</h1>
-                            <a href="#contact" class="mil-link mil-dark mil-arrow-place mil-down-arrow">
-                                <span>Send message</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- banner end -->
+                <!-- contact -->
+                <section class="fx-contact" id="contact">
+                    <div class="container">
 
-                <!-- contact info -->
-                <div class="container mil-p-120-0">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-8">
-                            <div class="mil-up mil-mb-90">
-                                <h3 class="mil-center mil-mb-60">Contact <span class="mil-thin">Information</span></h3>
-                                <div class="mil-divider mil-mb-60"></div>
-                                <div class="mil-contact-info">
-                                    <div class="mil-contact-info-item mil-up mil-mb-30">
-                                        <h6 class="mil-muted mil-mb-20">Email</h6>
-                                        <p class="mil-light-soft">framexoriginals@gmail.com</p>
-                                    </div>
-                                    <div class="mil-contact-info-item mil-up mil-mb-30">
-                                        <h6 class="mil-muted mil-mb-20">Phone</h6>
-                                        <p class="mil-light-soft">+91 7415900282</p>
-                                    </div>
-                                    <div class="mil-contact-info-item mil-up mil-mb-30">
-                                        <h6 class="mil-muted mil-mb-20">Office Address</h6>
-                                        <p class="mil-light-soft">FrameX Originals<br>Indore, Madhya Pradesh<br>India
-                                            452010</p>
-                                    </div>
-                                </div>
-                            </div>
+                        <!-- header -->
+                        <div class="fx-contact-head">
+                            <span class="fx-contact-eyebrow mil-up">Get in touch</span>
+                            <h1 class="fx-contact-title mil-up">Let's create something
+                                <span class="fx-thin">worth watching.</span>
+                            </h1>
+                            <p class="fx-contact-lead mil-up">Tell us about your brand, your idea, or your next
+                                launch. Share a few details and we'll get back to you within one business day.</p>
                         </div>
-                    </div>
-                </div>
-                <!-- contact info end -->
 
-                <!-- contact form -->
-                <section id="contact">
-                    <div class="container mil-p-120-90">
-                        <h3 class="mil-center mil-up mil-mb-120">Let's <span class="mil-thin">Talk</span></h3>
-                        <form class="row align-items-center">
-                            <div class="col-lg-6 mil-up">
-                                <input type="text" placeholder="Full Name*" required>
-                            </div>
-                            <div class="col-lg-6 mil-up">
-                                <input type="email" placeholder="Email Address*" required>
-                            </div>
-                            <div class="col-lg-6 mil-up">
-                                <input type="text" placeholder="Company">
-                            </div>
-                            <div class="col-lg-6 mil-up">
-                                <input type="tel" placeholder="Phone Number">
-                            </div>
-                            <div class="col-lg-12 mil-up">
-                                <textarea placeholder="Message*" required></textarea>
-                            </div>
-                            <div class="col-lg-8">
-                                <p class="mil-up mil-mb-30"><span class="mil-accent">*</span> Required fields. We
-                                    promise not to disclose your personal information to third parties.</p>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="mil-adaptive-right mil-up mil-mb-30">
-                                    <button type="submit" class="mil-button mil-arrow-place">
-                                        <span>Send Message</span>
-                                    </button>
+                        <div class="fx-contact-grid">
+
+                            <!-- left: details -->
+                            <aside class="fx-contact-info">
+                                <div class="fx-contact-block mil-up">
+                                    <span class="fx-contact-label">Email</span>
+                                    <a href="mailto:framexoriginals@gmail.com" class="fx-contact-value" target="_blank" data-no-swup>framexoriginals@gmail.com</a>
                                 </div>
+                                <div class="fx-contact-block mil-up">
+                                    <span class="fx-contact-label">Phone</span>
+                                    <a href="tel:+917415900282" class="fx-contact-value">+91 74159 00282</a>
+                                </div>
+                                <div class="fx-contact-block mil-up">
+                                    <span class="fx-contact-label">Studio</span>
+                                    <span class="fx-contact-value">Indore, Madhya Pradesh,<br>India — 452010</span>
+                                </div>
+                                <div class="fx-contact-block mil-up">
+                                    <span class="fx-contact-label">Follow</span>
+                                    <ul class="fx-contact-social">
+                                        <li><a href="https://www.instagram.com/framexoriginals?igsh=MXAxYTVkaGljb3lzdw==" target="_blank" data-no-swup aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+                                        <li><a href="https://www.linkedin.com/company/framex-originals-india/services/" target="_blank" data-no-swup aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+                                        <li><a href="mailto:framexoriginals@gmail.com" target="_blank" data-no-swup aria-label="Email"><i class="fas fa-envelope"></i></a></li>
+                                    </ul>
+                                </div>
+                            </aside>
+
+                            <!-- right: form -->
+                            <div class="fx-contact-form-wrap mil-up">
+                                <form class="fx-contact-form">
+                                    <div class="fx-field">
+                                        <label for="fx-name">Full Name <span class="fx-req">*</span></label>
+                                        <input id="fx-name" type="text" placeholder="Your name" required>
+                                    </div>
+                                    <div class="fx-field">
+                                        <label for="fx-email">Email Address <span class="fx-req">*</span></label>
+                                        <input id="fx-email" type="email" placeholder="you@company.com" required>
+                                    </div>
+                                    <div class="fx-field">
+                                        <label for="fx-company">Company / Brand</label>
+                                        <input id="fx-company" type="text" placeholder="Your brand">
+                                    </div>
+                                    <div class="fx-field">
+                                        <label for="fx-phone">Phone</label>
+                                        <input id="fx-phone" type="tel" placeholder="+91">
+                                    </div>
+                                    <div class="fx-field fx-field-full">
+                                        <label for="fx-type">What can we help with?</label>
+                                        <select id="fx-type">
+                                            <option value="">Select a service</option>
+                                            <option>Commercial &amp; Ad Film</option>
+                                            <option>Cinematography</option>
+                                            <option>Motion Graphics</option>
+                                            <option>Event Coverage</option>
+                                            <option>Something else</option>
+                                        </select>
+                                    </div>
+                                    <div class="fx-field fx-field-full">
+                                        <label for="fx-message">Project Details <span class="fx-req">*</span></label>
+                                        <textarea id="fx-message" placeholder="Tell us about the project, timeline, and budget range." required></textarea>
+                                    </div>
+                                    <div class="fx-contact-form-foot">
+                                        <p class="fx-contact-note"><span class="fx-req">*</span> Required. We never
+                                            share your details with third parties.</p>
+                                        <button type="submit" class="fx-contact-submit">
+                                            <span>Send Message</span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
-                        </form>
+
+                        </div>
                     </div>
                 </section>
+                <style>
+                    .fx-contact {
+                        background: #fafafa;
+                        padding: 130px 0 120px;
+                        overflow: hidden;
+                    }
+                    .fx-contact-head {
+                        max-width: 760px;
+                        margin: 0 0 70px;
+                    }
+                    .fx-contact-eyebrow {
+                        display: inline-block;
+                        font-size: 12px;
+                        font-weight: 600;
+                        letter-spacing: 0.2em;
+                        text-transform: uppercase;
+                        color: #ff9800;
+                        margin-bottom: 22px;
+                    }
+                    .fx-contact-title {
+                        font-size: clamp(40px, 6vw, 80px);
+                        font-weight: 700;
+                        line-height: 1.03;
+                        letter-spacing: -0.02em;
+                        color: #111;
+                        margin: 0 0 28px;
+                    }
+                    .fx-contact-title .fx-thin {
+                        font-weight: 300;
+                        color: #888;
+                    }
+                    .fx-contact-lead {
+                        font-size: clamp(16px, 1.4vw, 19px);
+                        line-height: 1.6;
+                        color: #555;
+                        margin: 0;
+                        max-width: 600px;
+                    }
+
+                    .fx-contact-grid {
+                        display: grid;
+                        grid-template-columns: 0.85fr 1.15fr;
+                        gap: 60px;
+                        align-items: start;
+                    }
+
+                    /* left details */
+                    .fx-contact-info {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 38px;
+                        padding-top: 8px;
+                    }
+                    .fx-contact-block {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+                    }
+                    .fx-contact-label {
+                        font-size: 12px;
+                        font-weight: 600;
+                        letter-spacing: 0.16em;
+                        text-transform: uppercase;
+                        color: #ff9800;
+                    }
+                    .fx-contact-value {
+                        font-size: clamp(18px, 1.6vw, 22px);
+                        font-weight: 500;
+                        color: #111;
+                        text-decoration: none;
+                        line-height: 1.45;
+                        transition: color 0.25s ease;
+                        width: fit-content;
+                    }
+                    a.fx-contact-value:hover {
+                        color: #ff9800;
+                    }
+                    .fx-contact-social {
+                        display: flex;
+                        gap: 12px;
+                        list-style: none;
+                        padding: 0;
+                        margin: 4px 0 0;
+                    }
+                    .fx-contact-social a {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 46px;
+                        height: 46px;
+                        border-radius: 50%;
+                        border: 1px solid rgba(0,0,0,0.12);
+                        color: #111;
+                        font-size: 17px;
+                        transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+                    }
+                    .fx-contact-social a:hover {
+                        background: #ff9800;
+                        border-color: #ff9800;
+                        color: #fff;
+                        transform: translateY(-3px);
+                    }
+
+                    /* right form */
+                    .fx-contact-form-wrap {
+                        background: #fff;
+                        border: 1px solid rgba(0,0,0,0.07);
+                        border-radius: 24px;
+                        padding: 48px;
+                        box-shadow: 0 24px 60px rgba(0,0,0,0.06);
+                    }
+                    .fx-contact-form {
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        gap: 24px;
+                    }
+                    .fx-field {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+                    }
+                    .fx-field-full {
+                        grid-column: 1 / -1;
+                    }
+                    .fx-field label {
+                        font-size: 13px;
+                        font-weight: 600;
+                        color: #333;
+                        letter-spacing: 0.01em;
+                    }
+                    .fx-req {
+                        color: #ff9800;
+                    }
+                    .fx-field input,
+                    .fx-field select,
+                    .fx-field textarea {
+                        width: 100%;
+                        background: #f4f4f4;
+                        border: 1px solid transparent;
+                        border-radius: 12px;
+                        padding: 15px 18px;
+                        font-size: 15px;
+                        color: #111;
+                        font-family: inherit;
+                        transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+                        outline: none;
+                    }
+                    .fx-field textarea {
+                        min-height: 140px;
+                        resize: vertical;
+                    }
+                    .fx-field input::placeholder,
+                    .fx-field textarea::placeholder {
+                        color: #aaa;
+                    }
+                    .fx-field input:focus,
+                    .fx-field select:focus,
+                    .fx-field textarea:focus {
+                        background: #fff;
+                        border-color: #ff9800;
+                        box-shadow: 0 0 0 4px rgba(255,152,0,0.12);
+                    }
+                    .fx-contact-form-foot {
+                        grid-column: 1 / -1;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        gap: 24px;
+                        flex-wrap: wrap;
+                        margin-top: 4px;
+                    }
+                    .fx-contact-note {
+                        font-size: 13px;
+                        color: #888;
+                        margin: 0;
+                        max-width: 320px;
+                        line-height: 1.5;
+                    }
+                    .fx-contact-submit {
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 12px;
+                        padding: 16px 34px;
+                        background: #ff9800;
+                        color: #fff;
+                        border: none;
+                        border-radius: 999px;
+                        font-size: 15px;
+                        font-weight: 600;
+                        letter-spacing: 0.02em;
+                        cursor: pointer;
+                        transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+                        box-shadow: 0 8px 30px rgba(255, 152, 0, 0.3);
+                    }
+                    .fx-contact-submit:hover {
+                        background: #e08600;
+                        transform: translateY(-2px);
+                        box-shadow: 0 12px 40px rgba(255, 152, 0, 0.4);
+                    }
+                    .fx-contact-submit svg {
+                        transition: transform 0.25s ease;
+                    }
+                    .fx-contact-submit:hover svg {
+                        transform: translateX(4px);
+                    }
+
+                    @media (max-width: 992px) {
+                        .fx-contact-grid {
+                            grid-template-columns: 1fr;
+                            gap: 50px;
+                        }
+                        .fx-contact-info {
+                            flex-direction: row;
+                            flex-wrap: wrap;
+                            gap: 32px 60px;
+                        }
+                    }
+                    @media (max-width: 768px) {
+                        .fx-contact { padding: 90px 0 90px; }
+                        .fx-contact-head { margin-bottom: 50px; }
+                        .fx-contact-form-wrap { padding: 28px; border-radius: 18px; }
+                        .fx-contact-form { grid-template-columns: 1fr; }
+                        .fx-contact-form-foot { justify-content: flex-start; }
+                    }
+                </style>
                 <!-- contact form end -->
 
                 <!-- footer -->
