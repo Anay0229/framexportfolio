@@ -1,5 +1,5 @@
-﻿<!DOCTYPE html>
-<html lang="zxx">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
   <meta charset="UTF-8" />
@@ -17,7 +17,24 @@
   <!-- FrameX Originals scss -->
   <link rel="stylesheet" href="css/style.css" />
   <!-- page name -->
-  <title>FrameX Originals</title>
+    <title>Work Gallery — FrameX Originals</title>
+
+    <!-- SEO -->
+    <meta name="description" content="A curated gallery of video work by FrameX Originals — commercials, cinematography, motion graphics and events.">
+    <meta name="robots" content="index,follow">
+    <link rel="canonical" href="https://framexoriginals.com/portfolio-3.html">
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="FrameX Originals">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Work Gallery — FrameX Originals">
+    <meta property="og:description" content="A curated gallery of video work by FrameX Originals — commercials, cinematography, motion graphics and events.">
+    <meta property="og:url" content="https://framexoriginals.com/portfolio-3.html">
+    <meta property="og:image" content="https://framexoriginals.com/assets/LOGO.png">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Work Gallery — FrameX Originals">
+    <meta name="twitter:description" content="A curated gallery of video work by FrameX Originals — commercials, cinematography, motion graphics and events.">
+    <meta name="twitter:image" content="https://framexoriginals.com/assets/LOGO.png">
   <!-- Favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-32x32.png">
@@ -299,6 +316,9 @@
                     });
                     wrapper.innerHTML = matching.map(function (s) { return s.html; }).join('');
 
+                    // Re-observe rebuilt videos for lazy loading
+                    if (window.fxLazyVideoScan) window.fxLazyVideoScan();
+
                     // Reinitialize Swiper with same config as main.js
                     new Swiper(swiperContainer, {
                       slidesPerView: 1,
@@ -331,7 +351,7 @@
                         <div class="mil-cover-frame mil-drag">
                           <div class="mil-cover" data-swiper-parallax-scale="1.3">
                             <video class="portfolio-video portrait" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()" poster="./assets/portfol/Motion Graphics_/Life Rise_poster.webp" preload="none" >
-                              <source src="./assets/portfol/Motion Graphics_/Life Rise.mp4"
+                              <source data-src="./assets/portfol/Motion Graphics_/Life Rise.mp4"
                                 type="video/mp4" />
                               Your browser does not support the video tag.
                             </video>
@@ -358,7 +378,7 @@
                         <div class="mil-cover-frame mil-drag">
                           <div class="mil-cover" data-swiper-parallax-scale="1.3">
                             <video class="portfolio-video portrait" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()" poster="./assets/portfol/Cinematography_/Cinematography_01_Coffee_Shop_poster.webp" preload="none" >
-                              <source src="./assets/portfol/Cinematography_/Cinematography_01_Coffee_Shop.mp4"
+                              <source data-src="./assets/portfol/Cinematography_/Cinematography_01_Coffee_Shop.mp4"
                                 type="video/mp4" />
                               Your browser does not support the video tag.
                             </video>
@@ -385,7 +405,7 @@
                         <div class="mil-cover-frame mil-drag">
                           <div class="mil-cover" data-swiper-parallax-scale="1.3">
                             <video class="portfolio-video portrait" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()" poster="./assets/portfol/Motion Graphics_/Vedful_poster.webp" preload="none" >
-                              <source src="./assets/portfol/Motion Graphics_/Vedful.mp4"
+                              <source data-src="./assets/portfol/Motion Graphics_/Vedful.mp4"
                                 type="video/mp4" />
                               Your browser does not support the video tag.
                             </video>
@@ -412,7 +432,7 @@
                         <div class="mil-cover-frame mil-drag">
                           <div class="mil-cover" data-swiper-parallax-scale="1.3">
                             <video class="portfolio-video portrait" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()" poster="./assets/portfol/Motion Graphics_/Crystalicious_poster.webp" preload="none" >
-                              <source src="./assets/portfol/Motion Graphics_/Crystalicious.mp4"
+                              <source data-src="./assets/portfol/Motion Graphics_/Crystalicious.mp4"
                                 type="video/mp4" />
                               Your browser does not support the video tag.
                             </video>
@@ -439,7 +459,7 @@
                         <div class="mil-cover-frame mil-drag">
                           <div class="mil-cover" data-swiper-parallax-scale="1.3">
                             <video class="portfolio-video portrait" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()" poster="./assets/portfol/Cinematography_/Cinematography_02_Deuce_poster.webp" preload="none" >
-                              <source src="./assets/portfol/Cinematography_/Cinematography_02_Deuce.mp4"
+                              <source data-src="./assets/portfol/Cinematography_/Cinematography_02_Deuce.mp4"
                                 type="video/mp4" />
                               Your browser does not support the video tag.
                             </video>
@@ -466,7 +486,7 @@
                         <div class="mil-cover-frame mil-drag">
                           <div class="mil-cover" data-swiper-parallax-scale="1.3">
                             <video class="portfolio-video portrait" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()" poster="./assets/portfol/Cinematography_/Cinematography_03_Pottery_Art_poster.webp" preload="none" >
-                              <source src="./assets/portfol/Cinematography_/Cinematography_03_Pottery_Art.mp4"
+                              <source data-src="./assets/portfol/Cinematography_/Cinematography_03_Pottery_Art.mp4"
                                 type="video/mp4" />
                               Your browser does not support the video tag.
                             </video>
@@ -493,7 +513,7 @@
                         <div class="mil-cover-frame mil-drag">
                           <div class="mil-cover" data-swiper-parallax-scale="1.3">
                             <video class="portfolio-video portrait" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()" poster="./assets/portfol/Cinematography_/Cinematography_04_Slow_Motion_poster.webp" preload="none" >
-                              <source src="./assets/portfol/Cinematography_/Cinematography_04_Slow_Motion.mp4"
+                              <source data-src="./assets/portfol/Cinematography_/Cinematography_04_Slow_Motion.mp4"
                                 type="video/mp4" />
                               Your browser does not support the video tag.
                             </video>
@@ -520,7 +540,7 @@
                         <div class="mil-cover-frame mil-drag">
                           <div class="mil-cover" data-swiper-parallax-scale="1.3">
                             <video class="portfolio-video landscape" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()" poster="./assets/portfol/Cinematography_/Cinematography_05_Story_FO_2_poster.webp" preload="none" >
-                              <source src="./assets/portfol/Cinematography_/Cinematography_05_Story_FO_2.mp4"
+                              <source data-src="./assets/portfol/Cinematography_/Cinematography_05_Story_FO_2.mp4"
                                 type="video/mp4" />
                               Your browser does not support the video tag.
                             </video>
@@ -547,7 +567,7 @@
                         <div class="mil-cover-frame mil-drag">
                           <div class="mil-cover" data-swiper-parallax-scale="1.3">
                             <video class="portfolio-video portrait" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()" poster="./assets/portfol/Cinematography_/Cinematography_06_Story_FO_poster.webp" preload="none" >
-                              <source src="./assets/portfol/Cinematography_/Cinematography_06_Story_FO.mp4"
+                              <source data-src="./assets/portfol/Cinematography_/Cinematography_06_Story_FO.mp4"
                                 type="video/mp4" />
                               Your browser does not support the video tag.
                             </video>
@@ -574,7 +594,7 @@
                         <div class="mil-cover-frame mil-drag">
                           <div class="mil-cover" data-swiper-parallax-scale="1.3">
                             <video class="portfolio-video portrait" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()" poster="./assets/portfol/Cinematography_/Cinematography_07_The_Cremiqua_2_poster.webp" preload="none" >
-                              <source src="./assets/portfol/Cinematography_/Cinematography_07_The_Cremiqua_2.mp4"
+                              <source data-src="./assets/portfol/Cinematography_/Cinematography_07_The_Cremiqua_2.mp4"
                                 type="video/mp4" />
                               Your browser does not support the video tag.
                             </video>
@@ -601,8 +621,7 @@
                         <div class="mil-cover-frame mil-drag">
                           <div class="mil-cover" data-swiper-parallax-scale="1.3">
                             <video class="portfolio-video landscape" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()" poster="./assets/portfol/Commercial and Advertisement_/Commercial_01_Alice_Finance_poster.webp" preload="none" >
-                              <source
-                                src="./assets/portfol/Commercial and Advertisement_/Commercial_01_Alice_Finance.mp4"
+                              <source data-src="./assets/portfol/Commercial and Advertisement_/Commercial_01_Alice_Finance.mp4"
                                 type="video/mp4" />
                               Your browser does not support the video tag.
                             </video>
@@ -629,7 +648,7 @@
                         <div class="mil-cover-frame mil-drag">
                           <div class="mil-cover" data-swiper-parallax-scale="1.3">
                             <video class="portfolio-video portrait" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()" poster="./assets/portfol/Commercial and Advertisement_/Commercial_03_Fourth_poster.webp" preload="none" >
-                              <source src="./assets/portfol/Commercial and Advertisement_/Commercial_03_Fourth.mp4"
+                              <source data-src="./assets/portfol/Commercial and Advertisement_/Commercial_03_Fourth.mp4"
                                 type="video/mp4" />
                               Your browser does not support the video tag.
                             </video>
@@ -656,7 +675,7 @@
                         <div class="mil-cover-frame mil-drag">
                           <div class="mil-cover" data-swiper-parallax-scale="1.3">
                             <video class="portfolio-video landscape" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()" poster="./assets/portfol/Commercial and Advertisement_/Commercial_04_Indew_poster.webp" preload="none" >
-                              <source src="./assets/portfol/Commercial and Advertisement_/Commercial_04_Indew.mp4"
+                              <source data-src="./assets/portfol/Commercial and Advertisement_/Commercial_04_Indew.mp4"
                                 type="video/mp4" />
                               Your browser does not support the video tag.
                             </video>
@@ -683,7 +702,7 @@
                         <div class="mil-cover-frame mil-drag">
                           <div class="mil-cover" data-swiper-parallax-scale="1.3">
                             <video class="portfolio-video landscape" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()" poster="./assets/portfol/Commercial and Advertisement_/Commercial_06_Satvik_poster.webp" preload="none" >
-                              <source src="./assets/portfol/Commercial and Advertisement_/Commercial_06_Satvik.mp4"
+                              <source data-src="./assets/portfol/Commercial and Advertisement_/Commercial_06_Satvik.mp4"
                                 type="video/mp4" />
                               Your browser does not support the video tag.
                             </video>
@@ -710,8 +729,7 @@
                         <div class="mil-cover-frame mil-drag">
                           <div class="mil-cover" data-swiper-parallax-scale="1.3">
                             <video class="portfolio-video portrait" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()" poster="./assets/portfol/Commercial and Advertisement_/Commercial_07_Satvik_Commercial_poster.webp" preload="none" >
-                              <source
-                                src="./assets/portfol/Commercial and Advertisement_/Commercial_07_Satvik_Commercial.mp4"
+                              <source data-src="./assets/portfol/Commercial and Advertisement_/Commercial_07_Satvik_Commercial.mp4"
                                 type="video/mp4" />
                               Your browser does not support the video tag.
                             </video>
@@ -738,7 +756,7 @@
                         <div class="mil-cover-frame mil-drag">
                           <div class="mil-cover" data-swiper-parallax-scale="1.3">
                             <video class="portfolio-video landscape" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()" poster="./assets/portfol/Commercial and Advertisement_/Commercial_08_Second_poster.webp" preload="none" >
-                              <source src="./assets/portfol/Commercial and Advertisement_/Commercial_08_Second.mp4"
+                              <source data-src="./assets/portfol/Commercial and Advertisement_/Commercial_08_Second.mp4"
                                 type="video/mp4" />
                               Your browser does not support the video tag.
                             </video>
@@ -765,8 +783,7 @@
                         <div class="mil-cover-frame mil-drag">
                           <div class="mil-cover" data-swiper-parallax-scale="1.3">
                             <video class="portfolio-video portrait" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()" poster="./assets/portfol/Commercial and Advertisement_/Commercial_09_Speed_Ramp_Seventh_poster.webp" preload="none" >
-                              <source
-                                src="./assets/portfol/Commercial and Advertisement_/Commercial_09_Speed_Ramp_Seventh.mp4"
+                              <source data-src="./assets/portfol/Commercial and Advertisement_/Commercial_09_Speed_Ramp_Seventh.mp4"
                                 type="video/mp4" />
                               Your browser does not support the video tag.
                             </video>
@@ -793,8 +810,7 @@
                         <div class="mil-cover-frame mil-drag">
                           <div class="mil-cover" data-swiper-parallax-scale="1.3">
                             <video class="portfolio-video portrait" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()" poster="./assets/portfol/Commercial and Advertisement_/Commercial_10_The_Cremiqua_poster.webp" preload="none" >
-                              <source
-                                src="./assets/portfol/Commercial and Advertisement_/Commercial_10_The_Cremiqua.mp4"
+                              <source data-src="./assets/portfol/Commercial and Advertisement_/Commercial_10_The_Cremiqua.mp4"
                                 type="video/mp4" />
                               Your browser does not support the video tag.
                             </video>
@@ -821,7 +837,7 @@
                         <div class="mil-cover-frame mil-drag">
                           <div class="mil-cover" data-swiper-parallax-scale="1.3">
                             <video class="portfolio-video portrait" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()" poster="./assets/portfol/Event Coverage_/Event_02_Third_poster.webp" preload="none" >
-                              <source src="./assets/portfol/Event Coverage_/Event_02_Third.mp4" type="video/mp4" />
+                              <source data-src="./assets/portfol/Event Coverage_/Event_02_Third.mp4" type="video/mp4" />
                               Your browser does not support the video tag.
                             </video>
                           </div>
@@ -847,7 +863,7 @@
                         <div class="mil-cover-frame mil-drag">
                           <div class="mil-cover" data-swiper-parallax-scale="1.3">
                             <video class="portfolio-video landscape" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()" poster="./assets/portfol/Motion Graphics_/Motion_01_Motion_Graphics_poster.webp" preload="none" >
-                              <source src="./assets/portfol/Motion Graphics_/Motion_01_Motion_Graphics.mp4"
+                              <source data-src="./assets/portfol/Motion Graphics_/Motion_01_Motion_Graphics.mp4"
                                 type="video/mp4" />
                               Your browser does not support the video tag.
                             </video>
@@ -874,7 +890,7 @@
                         <div class="mil-cover-frame mil-drag">
                           <div class="mil-cover" data-swiper-parallax-scale="1.3">
                             <video class="portfolio-video landscape" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()" poster="./assets/portfol/Motion Graphics_/Motion_02_Motion_Graphics_poster.webp" preload="none" >
-                              <source src="./assets/portfol/Motion Graphics_/Motion_02_Motion_Graphics.mp4"
+                              <source data-src="./assets/portfol/Motion Graphics_/Motion_02_Motion_Graphics.mp4"
                                 type="video/mp4" />
                               Your browser does not support the video tag.
                             </video>
@@ -901,7 +917,7 @@
                         <div class="mil-cover-frame mil-drag">
                           <div class="mil-cover" data-swiper-parallax-scale="1.3">
                             <video class="portfolio-video landscape" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()" poster="./assets/portfol/Motion Graphics_/Motion_03_Motion_Graphics_poster.webp" preload="none" >
-                              <source src="./assets/portfol/Motion Graphics_/Motion_03_Motion_Graphics.mp4"
+                              <source data-src="./assets/portfol/Motion Graphics_/Motion_03_Motion_Graphics.mp4"
                                 type="video/mp4" />
                               Your browser does not support the video tag.
                             </video>
@@ -1412,7 +1428,8 @@
   <!-- scroll to js -->
   <script src="js/plugins/ScrollTo.min.js"></script>
   <!-- FrameX Originals js -->
-  <script src="js/main.js"></script>
+  <script src="js/fx-lazy-video.js"></script>
+    <script src="js/main.js"></script>
 
   <style>
     .portfolio-video {
