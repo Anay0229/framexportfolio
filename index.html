@@ -64,6 +64,9 @@
         <!-- liquid ether background -->
         <div id="liquid-ether" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div>
 
+        <!-- film grain overlay (styled in css/style.css) -->
+        <div class="fx-grain" aria-hidden="true"></div>
+
         <!-- cursor -->
         <div class="mil-ball">
             <span class="mil-icon-1">
@@ -73,7 +76,7 @@
                 </svg>
             </span>
             <div class="mil-more-text">More</div>
-            <div class="mil-choose-text">Сhoose</div>
+            <div class="mil-choose-text">View</div>
         </div>
         <!-- cursor end -->
 
@@ -249,8 +252,10 @@
                         <div class="container">
                             <div class="mil-banner-content mil-up">
 
-                                <h1 class="mil-muted mil-mb-60">Crafting <span class="mil-thin">Visuals That</span><br>
-                                    Move <span class="mil-thin">The World</span></h1>
+                                <h1 class="mil-muted mil-mb-60">
+                                    <span class="fx-line-mask"><span class="fx-line">Crafting <span class="mil-thin">Visuals That</span></span></span>
+                                    <span class="fx-line-mask"><span class="fx-line">Move <span class="mil-thin">The World</span></span></span>
+                                </h1>
                                 <div class="row">
                                     <div class="col-md-7 col-lg-5">
 
@@ -333,6 +338,91 @@
                 </section>
                 <!-- about end -->
 
+                <!-- stats -->
+                <section class="fx-stats-section">
+                    <div class="container">
+                        <!-- PLACEHOLDER CONTENT: update data-count values and labels with real studio numbers -->
+                        <div class="fx-stats-grid fx-stagger">
+                            <div class="fx-stat">
+                                <div class="fx-stat-num"><span class="fx-count" data-count="150">0</span><span class="fx-stat-mark">+</span></div>
+                                <p class="fx-stat-label">Projects Delivered</p>
+                            </div>
+                            <div class="fx-stat">
+                                <div class="fx-stat-num"><span class="fx-count" data-count="2">0</span><span class="fx-stat-mark">+</span></div>
+                                <p class="fx-stat-label">Years Crafting Stories</p>
+                            </div>
+                            <div class="fx-stat">
+                                <div class="fx-stat-num"><span class="fx-count" data-count="50">0</span><span class="fx-stat-mark">+</span></div>
+                                <p class="fx-stat-label">Happy Clients</p>
+                            </div>
+                            <div class="fx-stat">
+                                <div class="fx-stat-num"><span class="fx-count" data-count="4">0</span></div>
+                                <p class="fx-stat-label">Core Specialties</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <style>
+                    .fx-stats-section {
+                        position: relative;
+                        background: #0a0a0a;
+                        padding: 90px 0;
+                        overflow: hidden;
+                    }
+                    .fx-stats-section::before {
+                        content: '';
+                        position: absolute;
+                        top: -220px;
+                        left: -160px;
+                        width: 520px;
+                        height: 520px;
+                        background: radial-gradient(closest-side, rgba(255,152,0,0.16), transparent 70%);
+                        pointer-events: none;
+                    }
+                    .fx-stats-grid {
+                        position: relative;
+                        display: grid;
+                        grid-template-columns: repeat(4, 1fr);
+                        gap: 40px 24px;
+                    }
+                    .fx-stat {
+                        padding-left: 24px;
+                        border-left: 1px solid rgba(255,255,255,0.12);
+                    }
+                    .fx-stat-num {
+                        display: flex;
+                        align-items: baseline;
+                        font-size: clamp(46px, 6vw, 84px);
+                        font-weight: 600;
+                        line-height: 1;
+                        letter-spacing: -0.02em;
+                        color: #fff;
+                        margin-bottom: 14px;
+                    }
+                    .fx-stat-mark {
+                        color: #ff9800;
+                        font-weight: 500;
+                        margin-left: 4px;
+                    }
+                    .fx-stat-label {
+                        font-size: 13px;
+                        font-weight: 600;
+                        letter-spacing: 0.18em;
+                        text-transform: uppercase;
+                        color: rgba(255,255,255,0.55);
+                        margin: 0;
+                    }
+                    @media (max-width: 992px) {
+                        .fx-stats-grid { grid-template-columns: repeat(2, 1fr); }
+                    }
+                    @media (max-width: 480px) {
+                        .fx-stats-section { padding: 70px 0; }
+                        .fx-stats-grid { gap: 32px 16px; }
+                        .fx-stat { padding-left: 16px; }
+                    }
+                </style>
+                <!-- stats end -->
+
                 <!-- featured work carousel -->
                 <section class="fx-featured-section">
                     <div class="fx-featured-head">
@@ -353,7 +443,7 @@
                     <div class="fx-featured-scroll-wrap">
                         <div class="fx-featured-scroll" id="fxFeaturedScroll">
 
-                            <a href="project-9.html" class="fx-feat-card" data-no-swup>
+                            <a href="project-9.html" class="fx-feat-card mil-choose" data-no-swup>
                                 <div class="fx-feat-media">
                                     <video class="fx-feat-video" muted loop playsinline preload="none"
                                         poster="./assets/portfol/Motion Graphics_/Life Rise_poster.webp">
@@ -368,7 +458,7 @@
                                 </div>
                             </a>
 
-                            <a href="project-1.html" class="fx-feat-card" data-no-swup>
+                            <a href="project-1.html" class="fx-feat-card mil-choose" data-no-swup>
                                 <div class="fx-feat-media">
                                     <video class="fx-feat-video" muted loop playsinline preload="none"
                                         poster="./assets/portfol/Cinematography_/Cinematography_01_Coffee_Shop_poster.webp">
@@ -383,7 +473,7 @@
                                 </div>
                             </a>
 
-                            <a href="project-18.html" class="fx-feat-card" data-no-swup>
+                            <a href="project-18.html" class="fx-feat-card mil-choose" data-no-swup>
                                 <div class="fx-feat-media">
                                     <video class="fx-feat-video" muted loop playsinline preload="none"
                                         poster="./assets/portfol/Motion Graphics_/Vedful_poster.webp">
@@ -398,7 +488,7 @@
                                 </div>
                             </a>
 
-                            <a href="project-8.html" class="fx-feat-card" data-no-swup>
+                            <a href="project-8.html" class="fx-feat-card mil-choose" data-no-swup>
                                 <div class="fx-feat-media">
                                     <video class="fx-feat-video" muted loop playsinline preload="none"
                                         poster="./assets/portfol/Commercial and Advertisement_/Commercial_01_Alice_Finance_poster.webp">
@@ -413,7 +503,7 @@
                                 </div>
                             </a>
 
-                            <a href="project-12.html" class="fx-feat-card" data-no-swup>
+                            <a href="project-12.html" class="fx-feat-card mil-choose" data-no-swup>
                                 <div class="fx-feat-media">
                                     <video class="fx-feat-video" muted loop playsinline preload="none"
                                         poster="./assets/portfol/Motion Graphics_/Crystalicious_poster.webp">
@@ -428,7 +518,7 @@
                                 </div>
                             </a>
 
-                            <a href="project-2.html" class="fx-feat-card" data-no-swup>
+                            <a href="project-2.html" class="fx-feat-card mil-choose" data-no-swup>
                                 <div class="fx-feat-media">
                                     <video class="fx-feat-video" muted loop playsinline preload="none"
                                         poster="./assets/portfol/Cinematography_/Cinematography_02_Deuce_poster.webp">
@@ -443,7 +533,7 @@
                                 </div>
                             </a>
 
-                            <a href="project-5.html" class="fx-feat-card" data-no-swup>
+                            <a href="project-5.html" class="fx-feat-card mil-choose" data-no-swup>
                                 <div class="fx-feat-media">
                                     <video class="fx-feat-video" muted loop playsinline preload="none"
                                         poster="./assets/portfol/Cinematography_/Cinematography_05_Story_FO_2_poster.webp">
@@ -458,7 +548,7 @@
                                 </div>
                             </a>
 
-                            <a href="project-3.html" class="fx-feat-card" data-no-swup>
+                            <a href="project-3.html" class="fx-feat-card mil-choose" data-no-swup>
                                 <div class="fx-feat-media">
                                     <video class="fx-feat-video" muted loop playsinline preload="none"
                                         poster="./assets/portfol/Cinematography_/Cinematography_03_Pottery_Art_poster.webp">
@@ -473,7 +563,7 @@
                                 </div>
                             </a>
 
-                            <a href="project-4.html" class="fx-feat-card" data-no-swup>
+                            <a href="project-4.html" class="fx-feat-card mil-choose" data-no-swup>
                                 <div class="fx-feat-media">
                                     <video class="fx-feat-video" muted loop playsinline preload="none"
                                         poster="./assets/portfol/Cinematography_/Cinematography_04_Slow_Motion_poster.webp">
@@ -488,7 +578,7 @@
                                 </div>
                             </a>
 
-                            <a href="project-7.html" class="fx-feat-card" data-no-swup>
+                            <a href="project-7.html" class="fx-feat-card mil-choose" data-no-swup>
                                 <div class="fx-feat-media">
                                     <video class="fx-feat-video" muted loop playsinline preload="none"
                                         poster="./assets/portfol/Cinematography_/Cinematography_07_The_Cremiqua_2_poster.webp">
@@ -503,7 +593,7 @@
                                 </div>
                             </a>
 
-                            <a href="project-6.html" class="fx-feat-card" data-no-swup>
+                            <a href="project-6.html" class="fx-feat-card mil-choose" data-no-swup>
                                 <div class="fx-feat-media">
                                     <video class="fx-feat-video" muted loop playsinline preload="none"
                                         poster="./assets/portfol/Cinematography_/Cinematography_06_Story_FO_poster.webp">
@@ -518,7 +608,7 @@
                                 </div>
                             </a>
 
-                            <a href="project-11.html" class="fx-feat-card" data-no-swup>
+                            <a href="project-11.html" class="fx-feat-card mil-choose" data-no-swup>
                                 <div class="fx-feat-media">
                                     <video class="fx-feat-video" muted loop playsinline preload="none"
                                         poster="./assets/portfol/Commercial and Advertisement_/Commercial_04_Indew_poster.webp">
@@ -533,7 +623,7 @@
                                 </div>
                             </a>
 
-                            <a href="project-10.html" class="fx-feat-card" data-no-swup>
+                            <a href="project-10.html" class="fx-feat-card mil-choose" data-no-swup>
                                 <div class="fx-feat-media">
                                     <video class="fx-feat-video" muted loop playsinline preload="none"
                                         poster="./assets/portfol/Commercial and Advertisement_/Commercial_03_Fourth_poster.webp">
@@ -548,7 +638,7 @@
                                 </div>
                             </a>
 
-                            <a href="project-13.html" class="fx-feat-card" data-no-swup>
+                            <a href="project-13.html" class="fx-feat-card mil-choose" data-no-swup>
                                 <div class="fx-feat-media">
                                     <video class="fx-feat-video" muted loop playsinline preload="none"
                                         poster="./assets/portfol/Commercial and Advertisement_/Commercial_06_Satvik_poster.webp">
@@ -563,7 +653,7 @@
                                 </div>
                             </a>
 
-                            <a href="project-14.html" class="fx-feat-card" data-no-swup>
+                            <a href="project-14.html" class="fx-feat-card mil-choose" data-no-swup>
                                 <div class="fx-feat-media">
                                     <video class="fx-feat-video" muted loop playsinline preload="none"
                                         poster="./assets/portfol/Commercial and Advertisement_/Commercial_07_Satvik_Commercial_poster.webp">
@@ -578,7 +668,7 @@
                                 </div>
                             </a>
 
-                            <a href="project-16.html" class="fx-feat-card" data-no-swup>
+                            <a href="project-16.html" class="fx-feat-card mil-choose" data-no-swup>
                                 <div class="fx-feat-media">
                                     <video class="fx-feat-video" muted loop playsinline preload="none"
                                         poster="./assets/portfol/Commercial and Advertisement_/Commercial_09_Speed_Ramp_Seventh_poster.webp">
@@ -593,7 +683,7 @@
                                 </div>
                             </a>
 
-                            <a href="project-15.html" class="fx-feat-card" data-no-swup>
+                            <a href="project-15.html" class="fx-feat-card mil-choose" data-no-swup>
                                 <div class="fx-feat-media">
                                     <video class="fx-feat-video" muted loop playsinline preload="none"
                                         poster="./assets/portfol/Commercial and Advertisement_/Commercial_08_Second_poster.webp">
@@ -608,7 +698,7 @@
                                 </div>
                             </a>
 
-                            <a href="project-17.html" class="fx-feat-card" data-no-swup>
+                            <a href="project-17.html" class="fx-feat-card mil-choose" data-no-swup>
                                 <div class="fx-feat-media">
                                     <video class="fx-feat-video" muted loop playsinline preload="none"
                                         poster="./assets/portfol/Commercial and Advertisement_/Commercial_10_The_Cremiqua_poster.webp">
@@ -623,7 +713,7 @@
                                 </div>
                             </a>
 
-                            <a href="project-19.html" class="fx-feat-card" data-no-swup>
+                            <a href="project-19.html" class="fx-feat-card mil-choose" data-no-swup>
                                 <div class="fx-feat-media">
                                     <video class="fx-feat-video" muted loop playsinline preload="none"
                                         poster="./assets/portfol/Event Coverage_/Event_02_Third_poster.webp">
@@ -638,7 +728,7 @@
                                 </div>
                             </a>
 
-                            <a href="project-20.html" class="fx-feat-card" data-no-swup>
+                            <a href="project-20.html" class="fx-feat-card mil-choose" data-no-swup>
                                 <div class="fx-feat-media">
                                     <video class="fx-feat-video" muted loop playsinline preload="none"
                                         poster="./assets/portfol/Motion Graphics_/Motion_01_Motion_Graphics_poster.webp">
@@ -653,7 +743,7 @@
                                 </div>
                             </a>
 
-                            <a href="project-21.html" class="fx-feat-card" data-no-swup>
+                            <a href="project-21.html" class="fx-feat-card mil-choose" data-no-swup>
                                 <div class="fx-feat-media">
                                     <video class="fx-feat-video" muted loop playsinline preload="none"
                                         poster="./assets/portfol/Motion Graphics_/Motion_02_Motion_Graphics_poster.webp">
@@ -668,7 +758,7 @@
                                 </div>
                             </a>
 
-                            <a href="project-22.html" class="fx-feat-card" data-no-swup>
+                            <a href="project-22.html" class="fx-feat-card mil-choose" data-no-swup>
                                 <div class="fx-feat-media">
                                     <video class="fx-feat-video" muted loop playsinline preload="none"
                                         poster="./assets/portfol/Motion Graphics_/Motion_03_Motion_Graphics_poster.webp">
@@ -811,6 +901,20 @@
                         background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.55) 100%);
                         pointer-events: none;
                     }
+                    /* cursor spotlight, position driven by --fx-mx/--fx-my from fx-interactions.js */
+                    .fx-feat-media::after {
+                        content: '';
+                        position: absolute;
+                        inset: 0;
+                        z-index: 2;
+                        background: radial-gradient(420px circle at var(--fx-mx, 50%) var(--fx-my, 50%), rgba(255,255,255,0.14), transparent 65%);
+                        opacity: 0;
+                        transition: opacity 0.4s ease;
+                        pointer-events: none;
+                    }
+                    .fx-feat-card:hover .fx-feat-media::after {
+                        opacity: 1;
+                    }
                     .fx-feat-title {
                         position: absolute;
                         top: 24px;
@@ -856,6 +960,105 @@
                     }
                 </style>
                 <!-- featured work carousel end -->
+
+                <!-- process -->
+                <section class="fx-process-section">
+                    <div class="container">
+                        <div class="fx-process-head">
+                            <span class="fx-process-eyebrow mil-up">How We Work</span>
+                            <h2 class="fx-process-title mil-up">Capture. <span class="mil-thin">Create.</span> Craft.</h2>
+                        </div>
+                        <div class="fx-process-grid fx-stagger">
+                            <div class="fx-process-step">
+                                <span class="fx-process-num">01</span>
+                                <h3 class="fx-process-step-title">Capture</h3>
+                                <p class="fx-process-step-text">Every project starts on location — scouting light, framing the shot, and recording the moments that matter with cinema-grade equipment.</p>
+                            </div>
+                            <div class="fx-process-step">
+                                <span class="fx-process-num">02</span>
+                                <h3 class="fx-process-step-title">Create</h3>
+                                <p class="fx-process-step-text">In the edit, footage becomes story. We cut, grade, and score with intention, shaping a narrative that holds attention from the first frame.</p>
+                            </div>
+                            <div class="fx-process-step">
+                                <span class="fx-process-num">03</span>
+                                <h3 class="fx-process-step-title">Craft</h3>
+                                <p class="fx-process-step-text">Polish is what separates good from unforgettable. Motion design, sound, color — every detail refined until the film feels inevitable.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <style>
+                    .fx-process-section {
+                        background: #fff;
+                        padding: 110px 0 120px;
+                    }
+                    .fx-process-head {
+                        margin-bottom: 70px;
+                    }
+                    .fx-process-eyebrow {
+                        display: inline-block;
+                        font-size: 12px;
+                        font-weight: 600;
+                        letter-spacing: 0.2em;
+                        text-transform: uppercase;
+                        color: #888;
+                        margin-bottom: 16px;
+                    }
+                    .fx-process-title {
+                        font-size: clamp(36px, 5vw, 64px);
+                        font-weight: 700;
+                        line-height: 1.05;
+                        color: #111;
+                        margin: 0;
+                    }
+                    .fx-process-grid {
+                        display: grid;
+                        grid-template-columns: repeat(3, 1fr);
+                        gap: 40px;
+                    }
+                    .fx-process-step {
+                        position: relative;
+                        border-top: 1px solid #e5e5e5;
+                        padding-top: 30px;
+                        transition: border-color 0.4s ease;
+                    }
+                    .fx-process-step:hover {
+                        border-top-color: #ff9800;
+                    }
+                    .fx-process-num {
+                        display: block;
+                        font-size: clamp(60px, 7vw, 96px);
+                        font-weight: 200;
+                        line-height: 1;
+                        color: rgba(255, 152, 0, 0.35);
+                        letter-spacing: -0.03em;
+                        margin-bottom: 24px;
+                        transition: color 0.4s ease;
+                    }
+                    .fx-process-step:hover .fx-process-num {
+                        color: #ff9800;
+                    }
+                    .fx-process-step-title {
+                        font-size: 24px;
+                        font-weight: 600;
+                        color: #111;
+                        margin: 0 0 16px;
+                    }
+                    .fx-process-step-text {
+                        font-size: 15px;
+                        line-height: 1.7;
+                        color: #555;
+                        margin: 0;
+                        max-width: 340px;
+                    }
+                    @media (max-width: 992px) {
+                        .fx-process-section { padding: 80px 0 90px; }
+                        .fx-process-head { margin-bottom: 50px; }
+                        .fx-process-grid { grid-template-columns: 1fr; gap: 30px; }
+                        .fx-process-step-text { max-width: 100%; }
+                    }
+                </style>
+                <!-- process end -->
 
                 <!-- services -->
                 <section class="mil-dark-bg">
@@ -944,7 +1147,7 @@
                         <div class="mil-brands-header mil-mb-60 mil-up">
                             <h2 class="mil-brands-title">Brands Worked With</h2>
                         </div>
-                        <div class="mil-brands-grid mil-up">
+                        <div class="mil-brands-grid fx-stagger">
                             <div class="mil-brand-tile">
                                 <img src="./img/partners/alice-fin.webp" alt="Alice Finance">
                             </div>
@@ -995,6 +1198,8 @@
                     }
 
                     .mil-brand-tile {
+                        position: relative;
+                        overflow: hidden;
                         display: flex;
                         justify-content: center;
                         align-items: center;
@@ -1008,6 +1213,28 @@
                         background: #fff;
                         transform: translateY(-4px);
                         box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+                    }
+
+                    /* diagonal shine sweep across the logo on hover */
+                    .mil-brand-tile::after {
+                        content: '';
+                        position: absolute;
+                        top: -30%;
+                        bottom: -30%;
+                        left: 0;
+                        width: 45%;
+                        background: linear-gradient(105deg, rgba(255, 152, 0, 0) 0%, rgba(255, 152, 0, 0.22) 50%, rgba(255, 152, 0, 0) 100%);
+                        transform: translateX(-220%) skewX(-18deg);
+                        pointer-events: none;
+                    }
+
+                    .mil-brand-tile:hover::after {
+                        transform: translateX(380%) skewX(-18deg);
+                        transition: transform 0.8s ease;
+                    }
+
+                    @media (prefers-reduced-motion: reduce) {
+                        .mil-brand-tile::after { display: none; }
                     }
 
                     .mil-brand-tile img {
@@ -1039,9 +1266,141 @@
                 </style>
                 <!-- brands grid end -->
 
-                <!-- partners -->
-                
-                <!-- partners end -->
+                <!-- testimonials -->
+                <section class="fx-testi-section">
+                    <div class="container">
+                        <div class="fx-testi-head">
+                            <span class="fx-testi-eyebrow mil-up">Client Words</span>
+                            <h2 class="fx-testi-title mil-up">What Partners <span class="mil-thin">Say</span></h2>
+                        </div>
+                        <!-- PLACEHOLDER CONTENT: replace quotes, names and roles with real client testimonials -->
+                        <div class="swiper fx-testi-slider mil-up">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="fx-testi-card">
+                                        <span class="fx-testi-quote-mark">&ldquo;</span>
+                                        <p class="fx-testi-quote">FrameX took a rough idea and returned a film that felt unmistakably ours. The attention to story — not just visuals — is what sets them apart.</p>
+                                        <div class="fx-testi-author">
+                                            <span class="fx-testi-name">Client Name</span>
+                                            <span class="fx-testi-role">Founder, Company</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="fx-testi-card">
+                                        <span class="fx-testi-quote-mark">&ldquo;</span>
+                                        <p class="fx-testi-quote">From the first call to final delivery, everything was intentional. The film didn't just look premium — it performed.</p>
+                                        <div class="fx-testi-author">
+                                            <span class="fx-testi-name">Client Name</span>
+                                            <span class="fx-testi-role">Marketing Lead, Company</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="fx-testi-card">
+                                        <span class="fx-testi-quote-mark">&ldquo;</span>
+                                        <p class="fx-testi-quote">They shot our launch event like a story, not a checklist. A year later we're still using that footage everywhere.</p>
+                                        <div class="fx-testi-author">
+                                            <span class="fx-testi-name">Client Name</span>
+                                            <span class="fx-testi-role">Brand Manager, Company</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-pagination fx-testi-pagination"></div>
+                        </div>
+                    </div>
+                </section>
+                <style>
+                    .fx-testi-section {
+                        background: #fff;
+                        padding: 110px 0 120px;
+                    }
+                    .fx-testi-head {
+                        margin-bottom: 60px;
+                    }
+                    .fx-testi-eyebrow {
+                        display: inline-block;
+                        font-size: 12px;
+                        font-weight: 600;
+                        letter-spacing: 0.2em;
+                        text-transform: uppercase;
+                        color: #888;
+                        margin-bottom: 16px;
+                    }
+                    .fx-testi-title {
+                        font-size: clamp(36px, 5vw, 64px);
+                        font-weight: 700;
+                        line-height: 1.05;
+                        color: #111;
+                        margin: 0;
+                    }
+                    .fx-testi-slider {
+                        overflow: hidden;
+                    }
+                    .fx-testi-card {
+                        position: relative;
+                        height: 100%;
+                        background: #fafafa;
+                        border: 1px solid #ececec;
+                        border-radius: 20px;
+                        padding: 44px 36px 38px;
+                        transition: border-color 0.35s ease, box-shadow 0.35s ease;
+                    }
+                    .fx-testi-card:hover {
+                        border-color: rgba(255, 152, 0, 0.45);
+                        box-shadow: 0 14px 40px rgba(0, 0, 0, 0.07);
+                    }
+                    .fx-testi-slider .swiper-slide {
+                        height: auto;
+                    }
+                    .fx-testi-quote-mark {
+                        display: block;
+                        font-size: 64px;
+                        line-height: 0.6;
+                        font-weight: 700;
+                        color: #ff9800;
+                        margin-bottom: 24px;
+                    }
+                    .fx-testi-quote {
+                        font-size: 17px;
+                        line-height: 1.65;
+                        color: #333;
+                        margin: 0 0 32px;
+                    }
+                    .fx-testi-author {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 2px;
+                    }
+                    .fx-testi-name {
+                        font-size: 15px;
+                        font-weight: 600;
+                        color: #111;
+                    }
+                    .fx-testi-role {
+                        font-size: 13px;
+                        color: #888;
+                    }
+                    .fx-testi-pagination {
+                        position: static;
+                        margin-top: 40px;
+                        text-align: center;
+                    }
+                    .fx-testi-pagination .swiper-pagination-bullet {
+                        background: #ccc;
+                        opacity: 1;
+                    }
+                    .fx-testi-pagination .swiper-pagination-bullet-active {
+                        background: #ff9800;
+                    }
+                    @media (max-width: 768px) {
+                        .fx-testi-section { padding: 80px 0 90px; }
+                        .fx-testi-head { margin-bottom: 40px; }
+                        .fx-testi-card { padding: 36px 28px 32px; }
+                    }
+                </style>
+                <!-- testimonials end -->
 
                 <!-- footer -->
                 <footer class="fx-footer">
@@ -1524,7 +1883,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             const container = document.getElementById('liquid-ether');
             initLiquidEther(container, {
-                colors: ['#5227FF', '#FF9FFC', '#B19EEF'],
+                colors: ['#FF9800', '#1a1a1a', '#FF5722'],
                 mouseForce: 20,
                 cursorSize: 100,
                 autoDemo: true,
@@ -1536,6 +1895,7 @@
     <!-- FrameX Originals js -->
     <script src="js/fx-lazy-video.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/fx-interactions.js"></script>
 
     <!-- Featured carousel: autoplay full-length videos on loop while visible -->
     <script>

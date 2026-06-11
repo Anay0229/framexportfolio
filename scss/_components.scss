@@ -2667,3 +2667,101 @@ html.is-animating {
         transition-delay: .3s;
     }
 }
+/* ----------------------------------------------------------------
+   FrameX visual enhancement pass
+   (display typography, film grain, banner line reveal, curtain
+   sweep, portfolio card spotlight — compiled copy lives at the
+   end of css/style.css; keep both in sync, no build step exists)
+---------------------------------------------------------------- */
+
+h1 .mil-thin,
+h2 .mil-thin,
+.fx-footer-cta-title .fx-thin {
+    font-family: $font-2;
+    font-style: italic;
+    font-weight: 330;
+    letter-spacing: .015em;
+}
+
+// Painted ABOVE the page content like real film stock (below the
+// preloader/cursor/menu chrome). Must never sit below the content:
+// the dark sections are created by backdrop-filter: invert(100%)
+// on .mil-dark-bg:before, and a blended/fixed layer underneath
+// breaks that backdrop chain.
+.fx-grain {
+    position: fixed;
+    top: -120px;
+    right: -120px;
+    bottom: -120px;
+    left: -120px;
+    z-index: 8;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+    background-size: 220px 220px;
+    opacity: .05;
+
+    @media (prefers-reduced-motion: no-preference) {
+        animation: fx-grain-jitter .9s steps(1, end) infinite;
+    }
+}
+
+@keyframes fx-grain-jitter {
+    0% { transform: translate(0, 0); }
+    20% { transform: translate(-60px, 40px); }
+    40% { transform: translate(40px, -55px); }
+    60% { transform: translate(-30px, -35px); }
+    80% { transform: translate(55px, 25px); }
+    100% { transform: translate(0, 0); }
+}
+
+.fx-line-mask {
+    display: block;
+    overflow: hidden;
+}
+
+.fx-line {
+    display: block;
+    will-change: transform;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .mil-curtain {
+        overflow: hidden;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: -10%;
+            bottom: -10%;
+            left: 0;
+            width: 26vw;
+            background: linear-gradient(100deg, rgba(255, 152, 0, 0) 0%, rgba(255, 152, 0, .5) 50%, rgba(255, 152, 0, 0) 100%);
+            transform: translateX(-40vw) skewX(-14deg);
+        }
+    }
+
+    html.is-animating .mil-curtain::after {
+        transform: translateX(130vw) skewX(-14deg);
+        transition: transform .9s cubic-bezier(.77, 0, .175, 1) .15s;
+    }
+}
+
+.fx-portfolio-grid {
+    & .mil-cover-frame::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 2;
+        background: radial-gradient(460px circle at var(--fx-mx, 50%) var(--fx-my, 50%), rgba(255, 255, 255, .12), transparent 65%);
+        opacity: 0;
+        transition: opacity .4s ease;
+        pointer-events: none;
+    }
+
+    & .mil-portfolio-item:hover .mil-cover-frame::after {
+        opacity: 1;
+    }
+}
