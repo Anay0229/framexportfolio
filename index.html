@@ -3,7 +3,6 @@
 
 <head>
 
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
@@ -93,33 +92,19 @@
                                 <ul>
                                     <li class="mil-has-children mil-active">
                                         <a href="index.html">Homepage</a>
-                                        <!-- <ul>
-                                            <li><a href="index.html">Landing page</a></li>
-                                            <li><a href="home-2.html">Personal</a></li>
-                                            <li><a href="portfolio-3.html">Portfolio slider</a></li>
-                                        </ul> -->
+                                        
                                     </li>
                                     <li class="mil-has-children">
                                         <a href="portfolio-1.html">Portfolio</a>
-                                        <!-- <ul>
-                                            <li><a href="portfolio-1.html">Grid type 1</a></li>
-                                            <li><a href="portfolio-2.html">Grid type 2</a></li>
-                                            <li><a href="portfolio-3.html">Slider</a></li>
-                                        </ul> -->
+                                        
                                     </li>
                                     <li class="mil-has-children">
                                         <a href="services.html">Services</a>
-                                        <!-- <ul>
-                                            <li><a href="services.html">Services List</a></li>
-                                            <li><a href="service.html">Single service</a></li>
-                                        </ul> -->
+                                        
                                     </li>
                                     <li class="mil-has-children">
                                         <a href="contact.html">Contact Us</a>
-                                        <!-- <ul>
-                                            <li><a href="contact.html">Contact</a></li>
-                                            <li><a href="404.html">404</a></li>
-                                        </ul> -->
+                                        
                                     </li>
                                 </ul>
                             </nav>
@@ -302,7 +287,6 @@
                                     <p class="mil-up mil-mb-60">We work across <b>Commercial & Ad Films</b>, <b>Cinematography</b>, <b>Motion Graphics</b>, and <b>Event Coverage</b> — each approached through the same lens: <b>Capture. Create. Craft.</b><br><br>
                                         We begin by getting deep into your brand — understanding not just what you do, but what you stand for. That clarity drives every creative decision we make, from shot composition to the final grade. We bring technical precision and creative depth to every project, regardless of scale, delivering visual stories that don't just look good — they stick.
                                     </p>
-
 
                                 </div>
 
@@ -1028,32 +1012,7 @@
                 <!-- brands grid end -->
 
                 <!-- partners -->
-                <!-- <div class="mil-soft-bg">
-                    <div class="container mil-p-0-120">
-
-                        <div class="swiper-container mil-infinite-show mil-up">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <a href="#." class="mil-partner-frame" style="width: 60px;"><img
-                                            src="img/partners/1.svg" alt="logo"></a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="#." class="mil-partner-frame" style="width: 100px;"><img
-                                            src="img/partners/2.svg" alt="logo"></a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="#." class="mil-partner-frame" style="width: 60px;"><img
-                                            src="img/partners/1.svg" alt="logo"></a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="#." class="mil-partner-frame" style="width: 100px;"><img
-                                            src="img/partners/2.svg" alt="logo"></a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div> -->
+                
                 <!-- partners end -->
 
                 <!-- footer -->
@@ -1548,93 +1507,6 @@
     </script>
     <!-- FrameX Originals js -->
     <script src="js/main.js"></script>
-    <style>
-        .portfolio-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-            border-radius: 8px;
-            transition: transform 0.3s ease;
-        }
-
-        .mil-cover {
-            position: relative;
-            overflow: hidden;
-            margin: 15px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .mil-cover:hover .portfolio-video {
-            transform: scale(1.05);
-        }
-
-        .portfolio-video-container {
-            aspect-ratio: 16/9;
-            position: relative;
-            background: rgba(0, 0, 0, 0.05);
-        }
-    </style>
-    <style>
-        /* 1. Make the wrapper a Flex container to center videos vertically and horizontally */
-        .mil-portfolio-item .mil-cover-frame .mil-cover {
-            display: flex !important;
-            justify-content: center !important;
-            align-items: center !important;
-            background-color: #000;
-            /* Optional: Adds a black background for letterboxing */
-        }
-
-        /* 2. Generic Video Styling */
-        .portfolio-video {
-            position: relative !important;
-            /* Removes absolute positioning so Flexbox works */
-            border-radius: 8px;
-            transition: transform 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            /* Adds depth */
-        }
-
-        /* 3. Portrait Logic (9:16) 
-       - Constraints height to 100% of container
-       - Allows width to adjust automatically 
-    */
-        .portfolio-video.portrait {
-            height: 100% !important;
-            width: auto !important;
-            aspect-ratio: 9/16;
-            object-fit: contain;
-        }
-
-        /* 4. Landscape Logic (16:9)
-       - Constraints width to 100% of container
-       - Allows height to adjust automatically
-    */
-        .portfolio-video.landscape {
-            width: 100% !important;
-            height: auto !important;
-            max-height: 100% !important;
-            /* Prevents overflow if screen is very short */
-            aspect-ratio: 16/9;
-            object-fit: contain;
-        }
-
-        .mil-cover {
-            position: relative;
-            overflow: hidden;
-            margin: 15px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .mil-cover:hover .portfolio-video {
-            transform: scale(1.02);
-            /* Slight zoom effect on hover */
-        }
-    </style>
 
     <!-- Featured carousel: autoplay full-length videos on loop while visible -->
     <script>
