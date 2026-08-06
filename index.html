@@ -1147,7 +1147,8 @@
                         <div class="mil-brands-header mil-mb-60 mil-up">
                             <h2 class="mil-brands-title">Brands Worked With</h2>
                         </div>
-                        <div class="mil-brands-grid fx-stagger">
+                        <div class="mil-brands-marquee" data-fx-slider data-speed="60" data-speed-on-hover="20"
+                            data-gap="24">
                             <div class="mil-brand-tile">
                                 <img src="./img/partners/alice-fin.webp" alt="Alice Finance">
                             </div>
@@ -1191,15 +1192,26 @@
                         line-height: 1.1;
                     }
 
-                    .mil-brands-grid {
-                        display: grid;
-                        grid-template-columns: repeat(4, 1fr);
-                        gap: 24px;
+                    /* infinite slider: full-bleed rail, faded at both edges */
+                    .mil-brands-marquee {
+                        overflow: hidden;
+                        padding: 12px 0;
+                        -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+                        mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+                    }
+
+                    .mil-brands-marquee .fx-slider-track {
+                        display: flex;
+                        align-items: center;
+                        width: max-content;
+                        will-change: transform;
                     }
 
                     .mil-brand-tile {
                         position: relative;
                         overflow: hidden;
+                        flex: 0 0 auto;
+                        width: 220px;
                         display: flex;
                         justify-content: center;
                         align-items: center;
@@ -1249,18 +1261,20 @@
                     }
 
                     @media (max-width: 768px) {
-                        .mil-brands-grid {
-                            grid-template-columns: repeat(2, 1fr);
+                        .mil-brand-tile {
+                            width: 180px;
+                            padding: 32px 20px;
                         }
 
-                        .mil-brand-tile {
-                            padding: 32px 20px;
+                        .mil-brand-tile img {
+                            height: 80px;
                         }
                     }
 
                     @media (max-width: 480px) {
-                        .mil-brands-grid {
-                            grid-template-columns: repeat(2, 1fr);
+                        .mil-brand-tile {
+                            width: 150px;
+                            padding: 24px 16px;
                         }
                     }
                 </style>
@@ -1896,6 +1910,7 @@
     <script src="js/fx-lazy-video.js"></script>
     <script src="js/main.js"></script>
     <script src="js/fx-interactions.js"></script>
+    <script src="js/fx-infinite-slider.js"></script>
 
     <!-- Featured carousel: autoplay full-length videos on loop while visible -->
     <script>
