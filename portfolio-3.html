@@ -264,81 +264,6 @@
               <button class="fx-filter-btn" data-filter="Motion Graphics">Motion Graphics</button>
             </div>
 
-            <script>
-              // Wait for window.load so Swiper from main.js is already initialized
-              window.addEventListener('load', function () {
-                initPortfolio3Filter();
-              });
-              // Also re-run after SWUP page transitions
-              document.addEventListener('swup:contentReplaced', function () {
-                // Give main.js swiper init a tick to run first
-                setTimeout(initPortfolio3Filter, 100);
-              });
-
-              function initPortfolio3Filter() {
-                var buttons = document.querySelectorAll('.fx-filter-btn');
-                var wrapper = document.querySelector('.mil-portfolio-slider .swiper-wrapper');
-                var swiperContainer = document.querySelector('.mil-portfolio-slider');
-                if (!buttons.length || !wrapper || !swiperContainer) return;
-
-                // Cache all original slides (once)
-                if (!window._fxSlideCache) {
-                  window._fxSlideCache = Array.from(wrapper.querySelectorAll('.portfolio-swiper-item')).map(function (s) {
-                    return { cat: s.getAttribute('data-category'), html: s.outerHTML };
-                  });
-                }
-
-                buttons.forEach(function (btn) {
-                  // Remove old listeners by cloning
-                  var fresh = btn.cloneNode(true);
-                  btn.parentNode.replaceChild(fresh, btn);
-                });
-
-                // Re-query after clone
-                buttons = document.querySelectorAll('.fx-filter-btn');
-
-                buttons.forEach(function (btn) {
-                  btn.addEventListener('click', function () {
-                    var filter = this.getAttribute('data-filter');
-
-                    // Update active state
-                    document.querySelectorAll('.fx-filter-btn').forEach(function (b) { b.classList.remove('fx-active'); });
-                    this.classList.add('fx-active');
-
-                    // Destroy existing Swiper instance
-                    if (swiperContainer.swiper) {
-                      swiperContainer.swiper.destroy(true, true);
-                    }
-
-                    // Rebuild wrapper with matching slides only
-                    var matching = window._fxSlideCache.filter(function (s) {
-                      return filter === 'All' || s.cat === filter;
-                    });
-                    wrapper.innerHTML = matching.map(function (s) { return s.html; }).join('');
-
-                    // Re-observe rebuilt videos for lazy loading
-                    if (window.fxLazyVideoScan) window.fxLazyVideoScan();
-
-                    // Reinitialize Swiper with same config as main.js
-                    new Swiper(swiperContainer, {
-                      slidesPerView: 1,
-                      spaceBetween: 0,
-                      speed: 800,
-                      parallax: true,
-                      mousewheel: { enable: true },
-                      navigation: {
-                        nextEl: '.mil-portfolio-next',
-                        prevEl: '.mil-portfolio-prev',
-                      },
-                      pagination: {
-                        el: '.swiper-portfolio-pagination',
-                        type: 'fraction',
-                      },
-                    });
-                  });
-                });
-              }
-            </script>
 
             <div class="row align-items-end">
 
@@ -400,7 +325,7 @@
                       </div>
                     </div>
 
-                    <div class="swiper-slide portfolio-swiper-item" data-category="Event Coverage">
+                    <div class="swiper-slide portfolio-swiper-item" data-category="Motion Graphics">
                       <div class="mil-portfolio-item mil-slider-item" data-swiper-parallax="-30">
                         <div class="mil-cover-frame mil-drag">
                           <div class="mil-cover" data-swiper-parallax-scale="1.3">
@@ -1728,6 +1653,7 @@
   <script src="js/fx-lazy-video.js"></script>
     <script src="js/main.js"></script>
     <script src="js/fx-interactions.js"></script>
+    <script src="js/fx-portfolio-filter.js"></script>
 
   <style>
     .portfolio-video {

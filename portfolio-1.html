@@ -307,66 +307,6 @@
                             <button class="fx-filter-btn" data-filter="Motion Graphics">Motion Graphics</button>
                         </div>
 
-                        <script>
-                            (function initPortfolioFilter() {
-                                function setupFilter() {
-                                    var buttons = document.querySelectorAll('.fx-filter-btn');
-                                    var items = document.querySelectorAll('.portfolio-grid-item');
-                                    if (!buttons.length || !items.length) return;
-
-                                    // Clone buttons to remove old event listeners
-                                    buttons.forEach(function (btn) {
-                                        var fresh = btn.cloneNode(true);
-                                        btn.parentNode.replaceChild(fresh, btn);
-                                    });
-
-                                    // Re-query after cloning
-                                    buttons = document.querySelectorAll('.fx-filter-btn');
-
-                                    buttons.forEach(function (btn) {
-                                        btn.addEventListener('click', function () {
-                                            var filter = this.getAttribute('data-filter');
-
-                                            // Update active button
-                                            buttons.forEach(function (b) { b.classList.remove('fx-active'); });
-                                            this.classList.add('fx-active');
-
-                                            // Show / hide items with a fade + scale animation
-                                            var ANIM_MS = 350;
-                                            items.forEach(function (item) {
-                                                var cat = item.getAttribute('data-category');
-                                                var show = (filter === 'All' || cat === filter);
-                                                clearTimeout(item._fxTimer);
-
-                                                if (show) {
-                                                    // Reveal: un-hide first, then animate in on next frame
-                                                    item.classList.remove('fx-hidden');
-                                                    void item.offsetWidth; // force reflow
-                                                    requestAnimationFrame(function () {
-                                                        item.classList.remove('fx-anim-out');
-                                                    });
-                                                } else {
-                                                    // Conceal: animate out, then remove from layout
-                                                    item.classList.add('fx-anim-out');
-                                                    item._fxTimer = setTimeout(function () {
-                                                        item.classList.add('fx-hidden');
-                                                    }, ANIM_MS);
-                                                }
-                                            });
-                                        });
-                                    });
-                                }
-
-                                // Run immediately for direct page loads
-                                if (document.readyState === 'loading') {
-                                    document.addEventListener('DOMContentLoaded', setupFilter);
-                                } else {
-                                    setupFilter();
-                                }
-                                // Re-run after SWUP replaces content
-                                document.addEventListener('swup:contentReplaced', setupFilter);
-                            })();
-                        </script>
 
                         <style>
                             .fx-portfolio-grid {
@@ -1526,6 +1466,7 @@
     <script src="js/fx-lazy-video.js"></script>
     <script src="js/main.js"></script>
     <script src="js/fx-interactions.js"></script>
+    <script src="js/fx-portfolio-filter.js"></script>
     <style>
         .portfolio-video {
             width: 100%;
